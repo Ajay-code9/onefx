@@ -1143,12 +1143,25 @@ const Home = () => {
 
   const [activeOnboardingStep, setActiveOnboardingStep] = useState(0);
 
+  /** Auto-rotate onboarding only on md+; on mobile it felt like the UI was "running by itself". */
+  const [onboardingAutoOk, setOnboardingAutoOk] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false,
+  );
   useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = () => setOnboardingAutoOk(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    if (!onboardingAutoOk) return;
     const timer = window.setInterval(() => {
       setActiveOnboardingStep((prev) => (prev + 1) % onboardingSteps.length);
     }, 3000);
     return () => window.clearInterval(timer);
-  }, [onboardingSteps.length]);
+  }, [onboardingAutoOk, onboardingSteps.length]);
 
   const whatsNewCards = [
     {
@@ -1170,14 +1183,6 @@ const Home = () => {
 
   const [whatsNewIndex, setWhatsNewIndex] = useState(0);
   const whatsNewTouchStartX = useRef<number | null>(null);
-
-  useEffect(() => {
-    const autoSlide = window.setInterval(() => {
-      setWhatsNewIndex((prev) => (prev + 1) % whatsNewCards.length);
-    }, 3000);
-
-    return () => window.clearInterval(autoSlide);
-  }, [whatsNewCards.length]);
 
   return (
     <div className="min-h-screen bg-dark">
