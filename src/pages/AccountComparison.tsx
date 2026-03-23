@@ -2,32 +2,24 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { 
   Check, 
-  Star,
-  Zap,
-  Shield,
-  Globe,
-  Clock,
-  ArrowRight,
-  CreditCard,
-  ChevronRight
+  Star
 } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const AccountHero = () => (
-  <section className="pt-[calc(5rem+32px)] pb-20 bg-white">
+  <section className="pt-[calc(5rem+26px)] pb-24 md:pb-28 bg-white font-sans antialiased">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-4xl mx-auto">
-        <motion.div 
+      <div className="text-center max-w-5xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-dark mb-8 leading-[1.1] tracking-tight">
-            Compare Our <span className="text-gold">Trading</span> <br />
-            Accounts Easily
+          <h1 className="text-[2.55rem] sm:text-[3.1rem] md:text-[4.1rem] font-semibold text-[#080320] mb-6 leading-[1.06] tracking-tight">
+            Compare Our <span className="text-gold">Trading Accounts</span> Easily
           </h1>
-          
-          <p className="text-dark/60 text-xl mb-12 leading-relaxed max-w-2xl mx-auto">
+
+          <p className="text-[#111318]/72 text-lg md:text-[2rem] leading-[1.48] max-w-4xl mx-auto font-normal">
             Review and compare types of trading accounts at oneFX to choose the right fit for your strategy.
           </p>
         </motion.div>
@@ -191,28 +183,23 @@ const ComparisonTable = () => {
 };
 
 const CTASection = () => (
-  <section className="py-24 bg-[#1A1B23] relative overflow-hidden">
+  <section className="py-24 bg-[#070312] relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="bg-gradient-to-r from-gold/20 to-transparent p-12 md:p-20 rounded-[3rem] border border-white/5 flex flex-col md:flex-row items-center justify-between gap-12">
-        <div className="max-w-2xl text-center md:text-left">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Power Your Trading <br />
-            <span className="text-gold">Journey Today</span>
-          </h2>
-          <p className="text-white/60 text-lg mb-0">
-            Join thousands of traders who have already chosen oneFX for their market success.
-          </p>
-        </div>
-        <div className="shrink-0">
-          <Button to="/signup" className="px-12 py-6 text-lg rounded-2xl shadow-2xl shadow-gold/20">
-            Open an Account
-          </Button>
-        </div>
+      <div className="text-center max-w-4xl mx-auto">
+        <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
+          Power Your Trading <br />
+          <span className="text-gold">Journey Today</span>
+        </h2>
+        <p className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10">
+          Access Forex, Shares, Commodities and Metals with advanced platform.
+        </p>
+        <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
+          Open an Account
+        </Button>
       </div>
     </div>
-    {/* Decorative elements */}
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -mr-64 -mt-64" />
-    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -ml-64 -mb-64" />
   </section>
 );
 

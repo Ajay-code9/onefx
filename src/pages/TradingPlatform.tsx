@@ -27,6 +27,7 @@ import {
   PieChart
 } from 'lucide-react';
 import { Button } from '../components/Button';
+import { BeginTradingStepsSection } from '../components/CommonSections';
 
 const PlatformHero = () => (
   <section className="pt-[calc(5rem+32px)] pb-20 bg-white overflow-hidden relative">
@@ -53,7 +54,7 @@ const PlatformHero = () => (
         </h1>
         
         <p className="text-gray-600 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
-          Trade on MetaTrader 5 and oneFX's proprietary platform. Our platforms combine powerful features, advanced analysis, and secure execution, making them the best forex trading software for all traders.
+          Trade on oneFXTrader and oneFX's proprietary platform. Our platforms combine powerful features, advanced analysis, and secure execution, making them the best forex trading software for all traders.
         </p>
       </motion.div>
 
@@ -70,7 +71,7 @@ const PlatformHero = () => (
             <img 
               src="/images/hero/Advanced-Trading.webp" 
               alt="Trading on Laptop" 
-              className="w-[300px] md:w-[600px] drop-shadow-2xl"
+              className="w-[360px] md:w-[760px] drop-shadow-2xl"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -92,22 +93,22 @@ const TrustedBrokerTabs = () => {
 
   const content = {
     'WEB PLATFORM': {
-      title: "Access MetaTrader 5 directly from your web browser — no downloads required. Trade from any device with secure and lightning-fast execution.",
-      subtitle: "How to trade on the MetaTrader 5 Web Platform:",
+      title: "Access oneFXTrader directly from your web browser — no downloads required. Trade from any device with secure and lightning-fast execution.",
+      subtitle: "How to trade on the oneFXTrader Web Platform:",
       steps: [
-        "Open the MetaTrader 5 Web platform in your browser.",
+        "Open the oneFXTrader Web platform in your browser.",
         "Log in with your trading account credentials.",
         "Access live quotes, charts, and order functions.",
         "Start trading instantly without installation."
       ],
       buttons: [
-        { label: "Open Web Platform", icon: ArrowRight, href: 'https://trade.mql5.com/trade' }
+        { label: "Open Web Platform", icon: ArrowRight, href: '/signup' }
       ],
-      image: "https://picsum.photos/seed/web-platform/800/500"
+      image: '/images/hero/web-terminal.svg',
     },
     'DESKTOP': {
-      title: "Download MetaTrader 5 for Desktop on Windows or Mac to enjoy full trading functionality with advanced tools and secure connectivity.",
-      subtitle: "How to trade on the MetaTrader 5 Desktop version:",
+      title: "Download oneFXTrader for Desktop on Windows or Mac to enjoy full trading functionality with advanced tools and secure connectivity.",
+      subtitle: "How to trade on the oneFXTrader Desktop version:",
       steps: [
         "Download the installer for your OS.",
         "Follow the on-screen installation steps.",
@@ -115,14 +116,14 @@ const TrustedBrokerTabs = () => {
         "Start trading on global markets."
       ],
       buttons: [
-        { label: "Get MT5 for Windows", icon: ArrowRight, href: 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe' },
-        { label: "Get MT5 for MacOS", icon: ArrowRight, href: 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip' }
+        { label: "Get oneFXTrader for Windows", icon: ArrowRight, href: '/signup' },
+        { label: "Get oneFXTrader for MacOS", icon: ArrowRight, href: '/signup' }
       ],
-      image: "https://picsum.photos/seed/desktop-platform/800/500"
+      image: '/images/hero/desktop.svg',
     },
     'ANDROID': {
-      title: "Trade anywhere with the MetaTrader 5 Android app. Stay connected and manage your trades on the go with full functionality.",
-      subtitle: "How to trade on the MetaTrader 5 Android app:",
+      title: "Trade anywhere with the oneFXTrader Android app. Stay connected and manage your trades on the go with full functionality.",
+      subtitle: "How to trade on the oneFXTrader Android app:",
       steps: [
         "Download the app from Google Play.",
         "Install and open the application.",
@@ -130,13 +131,13 @@ const TrustedBrokerTabs = () => {
         "Access markets and start trading."
       ],
       buttons: [
-        { label: "Get MT5 for Android", icon: ArrowRight, href: 'https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5' }
+        { label: "Get oneFXTrader for Android", icon: ArrowRight, href: '/signup' }
       ],
-      image: "https://picsum.photos/seed/android-platform/400/800"
+      image: '/images/hero/android-screen.svg',
     },
     'IOS': {
-      title: "Trade seamlessly from your iPhone or iPad with the MetaTrader 5 iOS app. Access markets and manage trades securely anytime.",
-      subtitle: "How to trade on the MetaTrader 5 iOS app:",
+      title: "Trade seamlessly from your iPhone or iPad with the oneFXTrader iOS app. Access markets and manage trades securely anytime.",
+      subtitle: "How to trade on the oneFXTrader iOS app:",
       steps: [
         "Download the app from the App Store.",
         "Install and launch the application.",
@@ -144,10 +145,10 @@ const TrustedBrokerTabs = () => {
         "Start trading on the move."
       ],
       buttons: [
-        { label: "Get MT5 for iOS", icon: ArrowRight, href: 'https://apps.apple.com/app/metatrader-5/id413251709' }
+        { label: "Get oneFXTrader for iOS", icon: ArrowRight, href: '/signup' }
       ],
-      image: "https://picsum.photos/seed/ios-platform/400/800"
-    }
+      image: '/images/hero/ios-screen.svg',
+    },
   };
 
   return (
@@ -188,10 +189,10 @@ const TrustedBrokerTabs = () => {
           >
             <div className={`order-2 lg:order-1 ${activeTab === 'ANDROID' || activeTab === 'IOS' ? 'flex justify-center' : ''}`}>
               <div className={`rounded-2xl overflow-hidden shadow-2xl border border-gray-100 ${activeTab === 'ANDROID' || activeTab === 'IOS' ? 'max-w-[300px]' : 'w-full'}`}>
-                <img 
-                  src={content[activeTab as keyof typeof content].image} 
-                  alt={activeTab} 
-                  className="w-full h-auto"
+                <img
+                  src={content[activeTab as keyof typeof content].image}
+                  alt={activeTab}
+                  className="w-full h-auto object-contain object-center bg-[#F8F9FB]"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -228,50 +229,97 @@ const TrustedBrokerTabs = () => {
   );
 };
 
-const FeatureGrid = () => (
-  <section className="py-24 bg-[#0A0B10] relative overflow-hidden">
-    {/* Grid Background */}
-    <div className="absolute inset-0 opacity-10 pointer-events-none">
-      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-    </div>
+const FeatureGrid = () => {
+  const featureItems = [
+    { icon: LayoutGrid, title: "Advanced multi asset platform" },
+    { icon: BarChart3, title: "Powerful charts and indicators" },
+    { icon: MousePointerClick, title: "One click trade execution" },
+    { icon: Settings2, title: "Algorithmic trading with EAs" },
+    { icon: Layers, title: "Depth of Market DOM" },
+    { icon: Shield, title: "Hedging and netting modes" }
+  ];
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          MetaTrader 5 at Its Best
-        </h2>
-        <p className="text-3xl md:text-4xl font-bold text-[#A67C37]">
-          Experience the Top Platform
-        </p>
+  const topRow = featureItems.slice(0, 3);
+  const bottomRow = featureItems.slice(3);
+
+  return (
+    <section className="py-24 bg-[#060311] relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-70">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(138,110,204,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(138,110,204,0.08) 1px, transparent 1px)',
+            backgroundSize: '120px 96px',
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(112,70,208,0.45),transparent_45%)]" />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { icon: LayoutGrid, title: "Advanced multi asset platform" },
-          { icon: BarChart3, title: "Powerful charts and indicators" },
-          { icon: MousePointerClick, title: "One click trade execution" },
-          { icon: Settings2, title: "Algorithmic trading with EAs" },
-          { icon: Layers, title: "Depth of Market DOM" },
-          { icon: Shield, title: "Hedging and netting modes" }
-        ].map((feature, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-[#1A1B23] p-8 rounded-xl border border-white/5 hover:border-gold/30 transition-all group flex items-center gap-6"
-          >
-            <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <feature.icon className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold text-white leading-tight">{feature.title}</h3>
-          </motion.div>
-        ))}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="lg:hidden text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-2">oneFXTrader at Its Best</h2>
+          <p className="text-3xl md:text-4xl font-semibold text-gold">Experience the Top Platform</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:hidden gap-4">
+          {featureItems.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="rounded-xl border border-white/10 bg-white/[0.08] px-5 py-5 flex items-center gap-3.5"
+            >
+              <feature.icon className="w-4.5 h-4.5 text-white shrink-0" />
+              <h3 className="text-white font-semibold text-sm leading-snug">{feature.title}</h3>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="hidden lg:block max-w-5xl mx-auto">
+          <div className="grid grid-cols-3 gap-4 mb-9">
+            {topRow.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-xl border border-white/10 bg-white/[0.08] px-6 py-5 flex items-center gap-3.5"
+              >
+                <feature.icon className="w-4.5 h-4.5 text-white shrink-0" />
+                <h3 className="text-white font-semibold text-2xl leading-tight">{feature.title}</h3>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mb-9">
+            <h2 className="text-6xl font-semibold text-white mb-2 leading-tight">oneFXTrader at Its Best</h2>
+            <p className="text-6xl font-semibold text-gold leading-tight">Experience the Top Platform</p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {bottomRow.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i + 3) * 0.08 }}
+                className="rounded-xl border border-white/10 bg-white/[0.08] px-6 py-5 flex items-center gap-3.5"
+              >
+                <feature.icon className="w-4.5 h-4.5 text-white shrink-0" />
+                <h3 className="text-white font-semibold text-2xl leading-tight">{feature.title}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const TradeEverything = () => (
   <section className="py-24 bg-white overflow-hidden">
@@ -282,10 +330,10 @@ const TradeEverything = () => (
             Trade Everything On A Single Platform
           </h2>
           <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            MetaTrader 5 is more than just a forex platform. With oneFX, you can access forex, metals, commodities and shares in one place. Simplify your trading with one trusted platform.
+            oneFXTrader is more than just a forex platform. With oneFX, you can access forex, metals, commodities and shares in one place. Simplify your trading with one trusted platform.
           </p>
           <Button to="/signup" className="gold-gradient px-10 py-5 rounded-full text-lg group">
-            Start Trading On MT5
+            Start Trading on oneFXTrader
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
@@ -293,7 +341,7 @@ const TradeEverything = () => (
           <img 
             src="/images/hero/Advanced-Trading.webp" 
             alt="Trading on Mobile" 
-            className="w-full max-w-[400px] mx-auto drop-shadow-2xl"
+            className="w-full max-w-[520px] mx-auto drop-shadow-2xl"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -309,12 +357,12 @@ const TradeYourWay = () => (
         Trade Your Way on Any Device
       </h2>
       <p className="text-gray-500 text-lg mb-16">
-        Stay connected to markets at all times with MetaTrader 5 on desktop, web or mobile.
+        Stay connected to markets at all times with oneFXTrader on desktop, web or mobile.
       </p>
       
       <div className="flex flex-wrap justify-center gap-6">
         <a
-          href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 px-8 py-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -322,11 +370,11 @@ const TradeYourWay = () => (
           <Monitor className="w-8 h-8 text-blue-500" />
           <div className="text-left">
             <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Get it on</div>
-            <div className="text-xl font-bold text-[#1A0B2E]">Windows</div>
+            <div className="text-xl font-bold text-[#1A0B2E]">oneFXTrader Windows</div>
           </div>
         </a>
         <a
-          href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 px-8 py-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -334,11 +382,11 @@ const TradeYourWay = () => (
           <PlayCircle className="w-8 h-8 text-green-500" />
           <div className="text-left">
             <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Get it on</div>
-            <div className="text-xl font-bold text-[#1A0B2E]">Google Play</div>
+            <div className="text-xl font-bold text-[#1A0B2E]">oneFXTrader Android</div>
           </div>
         </a>
         <a
-          href="https://apps.apple.com/app/metatrader-5/id413251709"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 px-8 py-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -346,7 +394,7 @@ const TradeYourWay = () => (
           <Apple className="w-8 h-8 text-black" />
           <div className="text-left">
             <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Download on the</div>
-            <div className="text-xl font-bold text-[#1A0B2E]">App Store</div>
+            <div className="text-xl font-bold text-[#1A0B2E]">oneFXTrader iOS</div>
           </div>
         </a>
       </div>
@@ -354,103 +402,29 @@ const TradeYourWay = () => (
   </section>
 );
 
-const ThreeSteps = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  
-  const steps = [
-    {
-      title: "Quick Signup",
-      description: "Create your forex broker account in minutes.",
-      image: "/images/hero/quick-signup.svg"
-    },
-    {
-      title: "Secure Deposit",
-      description: "Add funds safely through trusted payment methods.",
-      image: "/images/hero/secure-deposits.svg"
-    },
-    {
-      title: "Start Trading",
-      description: "Access global markets on the best forex platform.",
-      image: "/images/hero/access-global-markets.svg"
-    }
-  ];
-
-  return (
-    <section className="py-24 bg-gray-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-[#1A0B2E] mb-6">
-            Begin Trading In Three Easy Steps
-          </h2>
-          <p className="text-gray-500 text-lg">
-            Open your account, fund it, and access top forex trading platforms instantly.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-12">
-            {steps.map((step, i) => (
-              <div 
-                key={i}
-                onMouseEnter={() => setActiveStep(i)}
-                className={`relative pl-12 cursor-pointer transition-all duration-300 ${activeStep === i ? 'opacity-100' : 'opacity-40'}`}
-              >
-                <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-full transition-colors ${activeStep === i ? 'bg-[#1A0B2E]' : 'bg-gray-200'}`} />
-                <div className="text-sm font-bold text-[#1A0B2E] mb-2">Step {i + 1}</div>
-                <h3 className="text-3xl font-bold text-[#1A0B2E] mb-4">{step.title}</h3>
-                <p className="text-gray-600 text-lg">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="relative">
-            <div className="relative z-10 max-w-[400px] mx-auto">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeStep}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35 }}
-                  src={steps[activeStep].image}
-                  alt={steps[activeStep].title}
-                  className="w-full h-auto object-contain"
-                  referrerPolicy="no-referrer"
-                />
-              </AnimatePresence>
-            </div>
-            {/* Background Decorative Element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#1A0B2E] opacity-5 blur-[100px] -z-10" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   const faqs = [
     {
       q: "What is the best forex trading platform for beginners?",
-      a: "MetaTrader 5 is considered the most popular forex trading platform, offering simplicity, tools, and flexibility for new traders."
+      a: "oneFXTrader is designed for both beginners and professionals, offering simplicity, tools, and flexibility for new traders."
     },
     {
       q: "Why choose oneFX’s trading platforms?",
       a: "Our platforms offer institutional-grade execution, advanced charting tools, and a secure environment backed by oneFX's expertise."
     },
     {
-      q: "What makes MetaTrader 5 the top forex platform?",
-      a: "MT5 supports multi-asset trading, advanced technical analysis, algorithmic trading with EAs, and has a highly customizable interface."
+      q: "What makes oneFXTrader a top forex platform?",
+      a: "oneFXTrader supports multi-asset trading, advanced technical analysis, and algorithmic trading capabilities with a highly customizable interface."
     },
     {
       q: "Can I trade on multiple devices?",
-      a: "Yes, you can access your MT5 account across desktop, web, and mobile devices simultaneously with real-time synchronization."
+      a: "Yes, you can access your oneFXTrader account across desktop, web, and mobile devices simultaneously with real-time synchronization."
     },
     {
       q: "Which forex broker platform is best for professional traders?",
-      a: "Professional traders prefer MT5 for its Depth of Market (DOM), advanced order types, and powerful MQL5 programming capabilities."
+      a: "Professional traders prefer oneFXTrader for its Depth of Market (DOM), advanced order types, and flexible automation capabilities."
     }
   ];
 
@@ -498,27 +472,21 @@ const FAQSection = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 relative overflow-hidden bg-[#0A0B10]">
-    <div className="absolute inset-0 bg-gradient-to-br from-[#1A0B2E]/50 to-transparent" />
+  <section className="py-24 relative overflow-hidden bg-[#070312]">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-        Power Your Trading
+      <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
+        Power Your Trading <br />
+        <span className="text-gold">Journey Today</span>
       </h2>
-      <p className="text-4xl md:text-6xl font-bold text-[#A67C37] mb-8">
-        Journey Today
-      </p>
-      <p className="text-white/60 text-xl mb-12 max-w-2xl mx-auto">
+      <p className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10 max-w-4xl mx-auto">
         Access Forex, Shares, Commodities and Metals with advanced platform.
       </p>
-      <Button to="/signup" className="bg-white text-[#1A0B2E] hover:bg-gray-100 px-12 py-5 rounded-full text-lg font-bold group">
+      <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
         Open an Account
-        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        <ArrowRight className="w-5 h-5" />
       </Button>
-    </div>
-    {/* Decorative Streaks */}
-    <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 blur-[120px] rounded-full" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold/10 blur-[120px] rounded-full" />
     </div>
   </section>
 );
@@ -531,7 +499,10 @@ export const TradingPlatform = () => {
       <FeatureGrid />
       <TradeEverything />
       <TradeYourWay />
-      <ThreeSteps />
+      <BeginTradingStepsSection
+        title="Begin Trading In Three Steps"
+        subtitle="Open, fund, and access forex trading platforms quickly."
+      />
       <FAQSection />
       <BottomCTA />
     </div>

@@ -105,6 +105,9 @@ const Navbar = () => {
   ];
   const useDarkNavText = lightHeroPaths.includes(location.pathname) && !scrolled;
 
+  /** Light hero pages: black logo on white/clear top; after scroll, glass bar → white logo */
+  const navLogoSrc = useDarkNavText ? '/images/hero/logo-black.svg' : '/images/hero/logo-white.svg';
+
   const navMuted = useDarkNavText
     ? 'text-[#3d2f55] hover:text-gold'
     : 'text-[#e4dff2]/95 hover:text-gold';
@@ -152,9 +155,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2 group">
             <img
-              src="/images/hero/logo-white.svg"
+              src={navLogoSrc}
               alt="oneFX"
-              className="h-10 w-auto md:h-11 shrink-0 transition-transform group-hover:scale-[1.03]"
+              className="h-10 w-auto md:h-11 shrink-0 transition-transform duration-300 group-hover:scale-[1.03]"
               referrerPolicy="no-referrer"
             />
           </Link>
@@ -405,18 +408,20 @@ const StepCard = ({ number, title, description }: { number: string, title: strin
 );
 
 const WhatsNewCard = ({ image, title, description }: { image: string, title: string, description: string }) => (
-  <motion.div 
-    whileHover={{ y: -10 }}
-    className="flex flex-col gap-6"
-  >
+  <div className="flex flex-col gap-6">
     <div className="rounded-[2rem] overflow-hidden aspect-[4/3] border border-white/10">
-      <img src={image} alt={title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover scale-[1.06] md:scale-100"
+        referrerPolicy="no-referrer"
+      />
     </div>
     <div className="space-y-3">
       <h3 className="text-2xl font-bold text-slate-900">{title}</h3>
       <p className="text-slate-500 leading-relaxed">{description}</p>
     </div>
-  </motion.div>
+  </div>
 );
 
 const AccountTypeCard = ({ 
@@ -614,25 +619,21 @@ const MarketExplorer = () => {
 };
 
 const TradingEdgeSection = () => (
-  <section className="py-32 bg-dark relative overflow-hidden">
-    {/* Background Glows */}
-    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-    <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
-
+  <section className="py-32 bg-white relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-24">
-        <h2 className="text-5xl md:text-7xl font-bold text-white mb-8">The Trading Edge You Deserve</h2>
-        <p className="text-white/40 text-xl max-w-2xl mx-auto">Built for speed, reliability, and powerful trading.</p>
+        <h2 className="text-5xl md:text-7xl font-bold text-[#10131A] mb-8">The Trading Edge You Deserve</h2>
+        <p className="text-slate-600 text-xl max-w-2xl mx-auto">Built for speed, reliability, and powerful trading.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Lightning-Fast Execution */}
+        {/* Lightning-Fast Execution — dark glass card on white section */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="md:col-span-2 p-12 rounded-[3rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 relative overflow-hidden group min-h-[450px] flex flex-col justify-between"
+          className="md:col-span-2 p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group min-h-[450px] flex flex-col justify-between bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute top-0 right-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none">
-            <img src="/images/hero/lightening-fast.webp" alt="Lightning Fast Execution" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <img src="/images/hero/lightening-fast.webp" alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" aria-hidden />
           </div>
           <div className="relative z-10">
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
@@ -655,8 +656,9 @@ const TradingEdgeSection = () => (
         {/* Total Security */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 relative overflow-hidden group flex flex-col"
+          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
             <ShieldCheck className="w-full h-full text-white" />
           </div>
@@ -674,8 +676,9 @@ const TradingEdgeSection = () => (
         {/* Unmatched Protection */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 relative overflow-hidden group flex flex-col"
+          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
             <Lock className="w-full h-full text-white" />
           </div>
@@ -693,8 +696,9 @@ const TradingEdgeSection = () => (
         {/* Competitive Spreads */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 relative overflow-hidden group flex flex-col"
+          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
             <BarChart3 className="w-full h-full text-white" />
           </div>
@@ -712,8 +716,9 @@ const TradingEdgeSection = () => (
         {/* Rapid Withdrawals */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 relative overflow-hidden group flex flex-col"
+          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
             <CreditCard className="w-full h-full text-white" />
           </div>
@@ -776,19 +781,19 @@ const ZeroSpreadsSection = () => (
   </section>
 );
 
-const MetaTraderSection = () => (
+const OneFXTraderSection = () => (
   <section className="py-24 bg-[#0A0A1F] relative overflow-hidden">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
     
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">Advanced Trading With <br /> MetaTrader 5</h2>
+      <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">Advanced Trading With <br /> oneFXTrader</h2>
       
       <div className="relative max-w-5xl mx-auto mb-20 group">
         <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
         <div className="relative bg-dark rounded-[2rem] p-2 border border-white/10 shadow-2xl overflow-hidden">
           <img 
             src="/images/hero/Advanced-Trading.webp" 
-            alt="MetaTrader 5 Platform" 
+            alt="oneFXTrader Platform" 
             className="w-full h-auto rounded-[1.5rem] brightness-90"
             referrerPolicy="no-referrer"
           />
@@ -830,7 +835,7 @@ const MetaTraderSection = () => (
 
       <div className="flex flex-wrap justify-center gap-6">
         <a
-          href="https://www.metatrader5.com/en/download"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-black border border-white/10 px-6 py-3 rounded-xl hover:bg-white/5 transition-all group"
@@ -840,11 +845,11 @@ const MetaTraderSection = () => (
           </div>
           <div className="text-left">
             <div className="text-[10px] text-white/40 uppercase font-bold leading-none mb-1">Get it on</div>
-            <div className="text-sm text-white font-bold leading-none">Windows</div>
+            <div className="text-sm text-white font-bold leading-none">oneFXTrader Windows</div>
           </div>
         </a>
         <a
-          href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-black border border-white/10 px-6 py-3 rounded-xl hover:bg-white/5 transition-all group"
@@ -854,11 +859,11 @@ const MetaTraderSection = () => (
           </div>
           <div className="text-left">
             <div className="text-[10px] text-white/40 uppercase font-bold leading-none mb-1">Get it on</div>
-            <div className="text-sm text-white font-bold leading-none">Google Play</div>
+            <div className="text-sm text-white font-bold leading-none">oneFXTrader Android</div>
           </div>
         </a>
         <a
-          href="https://apps.apple.com/app/metatrader-5/id413251709"
+          href="/signup"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-black border border-white/10 px-6 py-3 rounded-xl hover:bg-white/5 transition-all group"
@@ -868,7 +873,7 @@ const MetaTraderSection = () => (
           </div>
           <div className="text-left">
             <div className="text-[10px] text-white/40 uppercase font-bold leading-none mb-1">Download on the</div>
-            <div className="text-sm text-white font-bold leading-none">App Store</div>
+            <div className="text-sm text-white font-bold leading-none">oneFXTrader iOS</div>
           </div>
         </a>
       </div>
@@ -973,16 +978,24 @@ const ConfidenceSection = () => (
       >
         <h2 className="text-4xl font-bold text-[#0F172A] mb-16">Payment On</h2>
         <div className="flex flex-wrap gap-8">
-          {['Neteller', 'Mastercard', 'Visa', 'Skrill'].map((brand) => (
-            <div key={brand} className="px-12 py-8 bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all flex items-center justify-center min-w-[200px] group">
-              <span className={`text-3xl font-black italic tracking-tighter transition-transform group-hover:scale-110 ${
-                brand === 'Neteller' ? 'text-emerald-600' :
-                brand === 'Mastercard' ? 'text-orange-600' :
-                brand === 'Visa' ? 'text-blue-800' :
-                'text-purple-800'
-              }`}>
-                {brand}
-              </span>
+          {[
+            { id: 'neteller', src: '/images/logos/netellerlogo.png', alt: 'Neteller' },
+            { id: 'mastercard', src: '/images/logos/mastercardlogo.png', alt: 'Mastercard' },
+            { id: 'visa', src: '/images/logos/visalogo.png', alt: 'Visa' },
+            { id: 'skrill', src: '/images/logos/skrilllogo.png', alt: 'Skrill' },
+          ].map((item) => (
+            <div
+              key={item.id}
+              className="px-10 py-7 bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all flex items-center justify-center min-w-[180px] md:min-w-[200px] group"
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="h-9 md:h-11 w-auto max-w-[9.5rem] object-contain object-center transition-transform group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
             </div>
           ))}
         </div>
@@ -1156,6 +1169,15 @@ const Home = () => {
   ];
 
   const [whatsNewIndex, setWhatsNewIndex] = useState(0);
+  const whatsNewTouchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const autoSlide = window.setInterval(() => {
+      setWhatsNewIndex((prev) => (prev + 1) % whatsNewCards.length);
+    }, 3000);
+
+    return () => window.clearInterval(autoSlide);
+  }, [whatsNewCards.length]);
 
   return (
     <div className="min-h-screen bg-dark">
@@ -1245,7 +1267,24 @@ const Home = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-slate-900">What's New on oneFX Trading Platform</h2>
         {/* Mobile: smooth slide (no native horizontal scroller) */}
         <div className="md:hidden">
-          <div className="relative overflow-hidden">
+          <div
+            className="relative overflow-hidden touch-pan-y"
+            onTouchStart={(e) => {
+              whatsNewTouchStartX.current = e.touches[0]?.clientX ?? null;
+            }}
+            onTouchEnd={(e) => {
+              if (whatsNewTouchStartX.current === null) return;
+              const endX = e.changedTouches[0]?.clientX ?? whatsNewTouchStartX.current;
+              const deltaX = whatsNewTouchStartX.current - endX;
+              const swipeThreshold = 44;
+              if (deltaX > swipeThreshold) {
+                setWhatsNewIndex((i) => (i + 1) % whatsNewCards.length);
+              } else if (deltaX < -swipeThreshold) {
+                setWhatsNewIndex((i) => (i - 1 + whatsNewCards.length) % whatsNewCards.length);
+              }
+              whatsNewTouchStartX.current = null;
+            }}
+          >
             <div
               className="flex will-change-transform"
               style={{
@@ -1264,23 +1303,6 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Prev/Next controls */}
-            <button
-              type="button"
-              onClick={() => setWhatsNewIndex((i) => (i - 1 + whatsNewCards.length) % whatsNewCards.length)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm"
-              aria-label="Previous"
-            >
-              <ChevronRight className="w-5 h-5 rotate-180" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setWhatsNewIndex((i) => (i + 1) % whatsNewCards.length)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm"
-              aria-label="Next"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
 
           {/* Dots */}
@@ -1356,7 +1378,49 @@ const Home = () => {
           <p className="text-[#1A1B23]/70 text-lg">Open your account and access global markets today.</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="md:hidden space-y-4">
+          {onboardingSteps.map((step, index) => (
+            <div
+              key={step.title}
+              className={`rounded-2xl transition-all duration-300 ${
+                activeOnboardingStep === index ? 'bg-white/92 shadow-sm ring-1 ring-black/5 p-3.5' : 'bg-transparent p-0'
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveOnboardingStep(index)}
+                className="w-full text-left"
+              >
+                <div className={`relative pl-4 ${activeOnboardingStep === index ? '' : 'pb-1'}`}>
+                  <div className={`absolute left-0 top-0 bottom-0 w-0.5 rounded-full ${activeOnboardingStep === index ? 'bg-[#2B2546]' : 'bg-[#2B2546]/40'}`} />
+                  <div className={`font-sans text-[13px] font-normal mb-1 tracking-[0.01em] ${activeOnboardingStep === index ? 'text-[#8B7F65]' : 'text-[#1A1B23]/50'}`}>
+                  Step {index + 1}
+                  </div>
+                  <h3 className={`font-sans leading-[1.12] text-[#1A1B23] ${activeOnboardingStep === index ? 'text-[2.02rem]' : 'text-[1.75rem]'}`}>
+                    {step.title}
+                  </h3>
+                  <p className={`font-sans text-[#1A1B23]/68 text-[1.1rem] leading-[1.4] transition-all duration-300 ease-out ${
+                    activeOnboardingStep === index ? 'opacity-100 max-h-24 mt-1.5' : 'opacity-0 max-h-0 overflow-hidden'
+                  }`}>
+                    {step.description}
+                  </p>
+                </div>
+              </button>
+              <div className={`max-w-[420px] mx-auto overflow-hidden rounded-[1.4rem] transition-all duration-300 ease-out ${
+                activeOnboardingStep === index ? 'opacity-100 max-h-[700px] mt-3' : 'opacity-0 max-h-0 mt-0'
+              }`}>
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="hidden md:grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div className="space-y-1.5 max-w-[540px]">
             {onboardingSteps.map((step, index) => (
               <button
@@ -1402,15 +1466,24 @@ const Home = () => {
     </section>
 
     {/* Partnership Program Section */}
-    <section className="py-24 bg-[#050505] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.18),transparent_65%)] pointer-events-none" />
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero/backgroundbehindguys.webp"
+          alt=""
+          className="h-full w-full object-cover object-center"
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-[#050505]/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.2),transparent_65%)] pointer-events-none" />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">More Than Just Partnership Program</h2>
           <p className="text-white/70 text-lg">Trade with us to maximise your potential returns</p>
         </div>
 
-        <div className="max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+        <div className="max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10">
           <img
             src="/images/hero/Parynership-program.webp"
             alt="Partnership Program"
@@ -1494,7 +1567,7 @@ const Home = () => {
       </div>
     </section>
 
-    <MetaTraderSection />
+    <OneFXTraderSection />
 
     <ConfidenceSection />
 
@@ -1527,29 +1600,6 @@ const Home = () => {
             role="Head of Trading"
             company="Meridian Partners"
           />
-        </div>
-      </div>
-    </section>
-
-    {/* CTA Section */}
-    <section className="py-24 bg-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-dark-card rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden border border-white/5">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 blur-[100px] rounded-full" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 blur-[100px] rounded-full" />
-          
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">Ready to Scale Your Trading?</h2>
-            <p className="text-white/40 text-xl mb-12">Join thousands of traders and brokers who are already using oneFX to scale their operations.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button to="/signup" className="px-12 py-5 text-xl">
-                Get Started Now
-              </Button>
-              <Button to="/contact-us" variant="outline" className="px-12 py-5 text-xl">
-                Contact Sales
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

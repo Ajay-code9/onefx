@@ -23,7 +23,7 @@ export function AuthLogo() {
   return (
     <Link to="/" className="inline-flex items-center select-none">
       <img
-        src="/images/hero/logo-white.svg"
+        src="/images/hero/logo-black.svg"
         alt="oneFX"
         className="h-12 w-auto"
         referrerPolicy="no-referrer"

@@ -204,30 +204,27 @@ const WhyUseCalendar = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#0A0B10] relative overflow-hidden">
-    {/* Background streaks/glow */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.1)_0%,transparent_70%)]" />
-    <div className="absolute inset-0 opacity-20">
-      <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.1)_50%,transparent_55%)] bg-[length:200%_200%] animate-[shimmer_10s_infinite_linear]" />
-    </div>
+  <section className="py-24 bg-[#070312] relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="text-center max-w-4xl mx-auto">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+          className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5"
         >
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-xl text-white/60 mb-12 leading-relaxed"
+          className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10"
         >
           Access Forex, Shares, Commodities and Metals with advanced platform.
         </motion.p>
@@ -237,9 +234,9 @@ const BottomCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Button to="/signup" className="px-12 py-5 text-lg font-bold bg-white text-dark border-none rounded-full hover:bg-gray-100 transition-all group">
+          <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
             Open an Account
-            <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight className="w-5 h-5" />
           </Button>
         </motion.div>
       </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { 
   TrendingUp, 
-  Zap, 
   Globe2, 
   ShieldCheck, 
   BarChart3, 
@@ -16,9 +15,8 @@ import {
   ChevronRight,
   ArrowDownToLine,
   Search,
-  PieChart,
-  Activity,
   ArrowRight,
+  HelpCircle,
   Wallet,
   MousePointer2
 } from 'lucide-react';
@@ -61,11 +59,23 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 // --- Shares Page Sections ---
 
 const SharesHero = () => (
-  <section className="relative pt-[calc(5rem+32px)] pb-32 overflow-hidden bg-[#050510]">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent pointer-events-none" />
-    <div className="absolute inset-0 opacity-20 pointer-events-none">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] animate-pulse delay-1000" />
+  <section className="relative pt-[calc(5rem+2px)] pb-8 md:pt-[calc(5rem+32px)] md:pb-20 overflow-hidden bg-[#0b0118]">
+    <div className="absolute inset-0">
+      <img
+        src="/images/hero/sharesherosections.webp"
+        alt=""
+        className="h-full w-full object-cover object-[58%_30%] md:object-center brightness-[1.06] contrast-[1.08] saturate-[1.14]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#0b0118]/56 via-[#0b0118]/26 to-[#0b0118]/10" />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#0b0118]/10 via-transparent to-[#0b0118]/38" />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(11,1,24,0.12) 0%, rgba(11,1,24,0.3) 28%, rgba(11,1,24,0.64) 52%, rgba(11,1,24,0.9) 74%, #0b0118 100%)',
+        }}
+      />
     </div>
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -74,26 +84,24 @@ const SharesHero = () => (
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="relative z-20 mt-[92px] sm:mt-[104px] md:mt-0 max-w-2xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold mb-8 border border-blue-500/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-xs font-bold mb-8 border border-gold/20">
             <BarChart3 className="w-4 h-4" />
             <span className="tracking-widest uppercase">Global Equity Markets</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] mb-8 tracking-tighter">
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] mb-8 tracking-tighter font-sans">
             Invest in <br />
-            <span className="text-blue-400">Global Giants</span>
+            <span className="gold-gradient-text">Global Giants</span>
           </h1>
           <p className="text-xl text-white/60 mb-10 leading-relaxed max-w-lg">
             Trade thousands of global shares with zero commission. Access the world's leading exchanges and build your dream portfolio today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              to="/signup"
-              className="px-10 py-5 text-lg bg-blue-500 hover:bg-blue-600 border-blue-500 shadow-blue-500/20"
-            >
+            <Button to="/signup" className="px-10 py-5 text-lg">
               Start Trading <ChevronRight className="w-5 h-5 ml-1" />
             </Button>
-            <Button to="/shares" variant="outline" className="px-10 py-5 text-lg border-white/10 hover:border-blue-500/50">
+            <Button to="/shares" variant="outline" className="px-10 py-5 text-lg border-white/10 hover:border-gold/50">
               View All Stocks
             </Button>
           </div>
@@ -112,37 +120,6 @@ const SharesHero = () => (
             <div>
               <div className="text-2xl font-bold text-white">1:20</div>
               <div className="text-xs text-white/40 uppercase tracking-wider">Max Leverage</div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <div className="relative z-10 aspect-square flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-full blur-[100px] animate-pulse" />
-            <div className="relative group cursor-pointer">
-              <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-2xl group-hover:bg-blue-500/30 transition-all duration-500" />
-              <img 
-                src="https://picsum.photos/seed/stock-market/800/800" 
-                alt="Stock Market" 
-                className="w-80 h-80 object-cover rounded-3xl border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.3)] relative z-10 grayscale hover:grayscale-0 transition-all duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute -top-6 -left-6 bg-dark/80 backdrop-blur-md border border-blue-500/30 p-4 rounded-2xl z-20 shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
-                    <Activity className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-white/40">NVDA</div>
-                    <div className="text-lg font-bold text-white">+2.91%</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </motion.div>
@@ -208,56 +185,142 @@ const SharesMarketOverview = () => {
 };
 
 const SharesFeatures = () => (
-  <section className="py-32 bg-[#050510] relative overflow-hidden">
+  <section className="py-32 bg-[linear-gradient(180deg,#13032a_0%,#09021b_58%,#090118_100%)] relative overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_16%_88%,rgba(120,72,198,0.24),transparent_44%),radial-gradient(circle_at_82%_70%,rgba(98,53,162,0.2),transparent_40%)]" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid lg:grid-cols-2 gap-24 items-center">
-        <div className="order-2 lg:order-1">
-          <div className="relative">
-            <div className="absolute inset-0 bg-blue-500/10 rounded-[3rem] blur-3xl" />
-            <img 
-              src="https://picsum.photos/seed/stock-analysis/800/1000" 
-              alt="Stock Analysis" 
-              className="relative z-10 rounded-[3rem] border border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute -bottom-10 -right-10 bg-dark/80 backdrop-blur-xl border border-white/10 p-8 rounded-3xl z-20 shadow-2xl">
-              <PieChart className="w-12 h-12 text-blue-500 mb-4" />
-              <div className="text-white font-bold text-xl mb-1">Portfolio Diversification</div>
-              <div className="text-white/40 text-sm">Access 15+ global exchanges instantly.</div>
-            </div>
-          </div>
+      <div className="text-center max-w-4xl mx-auto mb-10">
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Why Trade Shares With oneFX</h2>
+      </div>
+
+      <div className="max-w-[1180px] mx-auto overflow-hidden">
+        <img
+          src="/images/hero/Trade-Forex-With-oneFX.webp"
+          alt="Why Trade Shares With oneFX"
+          className="w-full h-auto object-cover object-center"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+    </div>
+  </section>
+);
+
+const UnderstandingStockMarketTrading = () => (
+  <section className="py-24 bg-[#F8F9FA]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center max-w-4xl mx-auto mb-14">
+        <h2 className="font-sans text-4xl md:text-6xl font-medium text-[#10131A] mb-5 leading-tight">
+          Understanding Stock Market Trading
+        </h2>
+        <p className="font-sans text-[#10131A]/72 text-base md:text-xl leading-relaxed max-w-3xl mx-auto">
+          Gain a clearer view of how global equity markets function, how share prices reflect company performance, and how traders participate in both rising and falling markets.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6 lg:gap-7">
+        <div className="rounded-3xl overflow-hidden bg-white border border-[#E9EBF2] shadow-[0_10px_24px_rgba(15,23,42,0.07)] min-h-[540px]">
+          <img
+            src="/images/hero/Forex-Trading.svg"
+            alt="Stock market chart"
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
         </div>
 
-        <div className="order-1 lg:order-2">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-            The Smart Way to <br />
-            <span className="text-blue-400">Trade Shares</span>
-          </h2>
-          <p className="text-white/40 text-xl mb-12 leading-relaxed">
-            Experience stock trading like never before. Our platform is designed for both beginners and professional traders, offering the tools you need to succeed.
-          </p>
-          
-          <div className="grid sm:grid-cols-2 gap-8">
-            {[
-              { title: 'Zero Commission', desc: 'No hidden fees or commissions on any share trades.', icon: <Zap className="w-6 h-6" /> },
-              { title: 'Fractional Shares', desc: 'Buy any stock with as little as $10 investment.', icon: <BarChart3 className="w-6 h-6" /> },
-              { title: 'Real-time Data', desc: 'Free live streaming quotes for all major exchanges.', icon: <Activity className="w-6 h-6" /> },
-              { title: 'Dividend Payouts', desc: 'Receive dividends directly into your trading account.', icon: <Wallet className="w-6 h-6" /> },
-            ].map((feature, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/20 transition-all">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
+        <div className="rounded-3xl bg-[#ECEEF8] border border-[#E3E7F2] p-8 md:p-9 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+          <div className="w-12 h-12 rounded-xl bg-[#2A0D51] flex items-center justify-center mb-7">
+            <BarChart3 className="w-6 h-6 text-white" />
           </div>
+          <h3 className="font-sans text-[2.1rem] md:text-[2.35rem] leading-[1.12] font-medium text-[#1A1B23] mb-5">
+            What is Stock Trading?
+          </h3>
+          <p className="font-sans text-[#1A1B23]/78 text-base md:text-lg leading-relaxed font-normal">
+            Stock trading allows investors to buy and sell company shares through online platforms. Traders profit from price movements and dividends. Explore details in our in-depth Share Market Trading blog.
+          </p>
+        </div>
+
+        <div className="rounded-3xl bg-[#ECEEF8] border border-[#E3E7F2] p-8 md:p-9 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+          <div className="w-12 h-12 rounded-xl bg-[#2A0D51] flex items-center justify-center mb-7">
+            <HelpCircle className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="font-sans text-[2.1rem] md:text-[2.35rem] leading-[1.12] font-medium text-[#1A1B23] mb-5">
+            How to trade shares
+          </h3>
+          <p className="font-sans text-[#1A1B23]/78 text-base md:text-lg leading-relaxed font-normal">
+            To trade shares, open a stock trading account with oneFX, select global stocks, and place buy or sell orders. Traders use analysis to capture opportunities in leading stock markets worldwide.
+          </p>
         </div>
       </div>
     </div>
   </section>
 );
+
+const SharesHeatmap = () => {
+  const currencies = ['EUR', 'USD', 'AUD', 'GBP', 'NZD', 'CAD', 'CHF', 'JPY', 'CNY'];
+  const values: Record<string, Record<string, string>> = {
+    EUR: { USD: '0.53%', AUD: '0.17%', GBP: '-0.70%', NZD: '0.02%', CAD: '0.16%', CHF: '0.70%', JPY: '-0.91%', CNY: '0%' },
+    USD: { EUR: '-0.53%', AUD: '0.13%', GBP: '-0.42%', NZD: '-0.11%', CAD: '1%', CHF: '-0.04%', JPY: '-0.32%', CNY: '-0.12%' },
+    AUD: { EUR: '-0.52%', USD: '-0.13%', GBP: '-0.83%', NZD: '-0.46%', CAD: '-0.31%', CHF: '0.40%', JPY: '-0.70%', CNY: '-0.56%' },
+    GBP: { EUR: '0.70%', USD: '0.42%', AUD: '0.83%', NZD: '0.32%', CAD: '0.43%', CHF: '0.39%', JPY: '0.30%', CNY: '0.24%' },
+    NZD: { EUR: '-0.02%', USD: '0.11%', AUD: '0.46%', GBP: '-0.32%', CAD: '0.11%', CHF: '0.09%', JPY: '-0.20%', CNY: '-0.09%' },
+    CAD: { EUR: '-0.16%', USD: '-1%', AUD: '0.31%', GBP: '-0.43%', NZD: '-0.11%', CHF: '-0.05%', JPY: '-0.17%', CNY: '-0.11%' },
+    CHF: { EUR: '-0.70%', USD: '0.04%', AUD: '-0.40%', GBP: '-0.39%', NZD: '-0.09%', CAD: '0.05%', JPY: '-0.74%', CNY: '-0.08%' },
+    JPY: { EUR: '0.91%', USD: '0.32%', AUD: '0.70%', GBP: '-0.30%', NZD: '0.20%', CAD: '0.17%', CHF: '0.74%', CNY: '0.23%' },
+    CNY: { EUR: '0%', USD: '0.12%', AUD: '0.56%', GBP: '-0.24%', NZD: '0.09%', CAD: '0.11%', CHF: '0.08%', JPY: '-0.23%' },
+  };
+
+  const getCellClass = (value: string) => {
+    const num = parseFloat(value);
+    if (Number.isNaN(num) || num === 0) return 'bg-[#7A7A7A] text-white';
+    if (num > 0.4) return 'bg-[#3FAFA3] text-white';
+    if (num > 0) return 'bg-[#97D3CC] text-white';
+    if (num < -0.4) return 'bg-[#E86779] text-white';
+    return 'bg-[#E8AAB5] text-white';
+  };
+
+  return (
+    <section className="py-24 bg-[#F8F9FA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="font-sans text-4xl md:text-6xl font-medium text-[#10131A] mb-4">Heatmap</h2>
+          <p className="font-sans text-[#10131A]/72 text-base md:text-xl">Monitor live currency strength and market direction instantly.</p>
+        </div>
+
+        <div className="bg-white rounded-3xl border border-[#E5E7EB] shadow-[0_10px_28px_rgba(15,23,42,0.08)] p-4 md:p-6 overflow-x-auto">
+          <table className="w-full min-w-[860px] border-collapse">
+            <thead>
+              <tr>
+                <th className="p-3 border border-[#E5E7EB] bg-[#F8F9FA]" />
+                {currencies.map((col) => (
+                  <th key={col} className="p-3 border border-[#E5E7EB] bg-[#F8F9FA] text-[#1A1B23] text-xs font-semibold">
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {currencies.map((row) => (
+                <tr key={row}>
+                  <td className="p-3 border border-[#E5E7EB] bg-[#F8F9FA] text-[#1A1B23] text-xs font-semibold">{row}</td>
+                  {currencies.map((col) => {
+                    if (row === col) {
+                      return <td key={col} className="p-3 border border-[#E5E7EB] bg-[#F2F3F5]" />;
+                    }
+                    const value = values[row]?.[col] ?? '0%';
+                    return (
+                      <td key={col} className={`p-3 border border-[#E5E7EB] text-center text-[11px] font-medium ${getCellClass(value)}`}>
+                        {value}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const TradingSteps = () => (
   <section className="py-32 bg-dark">
@@ -348,6 +411,8 @@ export const Shares = () => {
       <MarketTickerStrip assets={tickerAssets} />
       <SharesMarketOverview />
       <SharesFeatures />
+      <UnderstandingStockMarketTrading />
+      <SharesHeatmap />
       <TradingPlatformsSection />
       <TradingSteps />
       <StatsSection />

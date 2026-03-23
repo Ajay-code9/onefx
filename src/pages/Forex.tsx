@@ -1,17 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { 
-  TrendingUp, 
-  Zap, 
   Globe2, 
-  ShieldCheck, 
   ArrowRight,
   ChevronRight,
   CheckCircle2,
   BarChart3,
   Plus,
   Minus,
-  ArrowDownToLine,
   HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -54,17 +50,32 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 // --- Forex Page Sections ---
 
 const ForexHero = () => (
-  <section className="relative pt-[calc(5rem+32px)] pb-24 overflow-hidden bg-[#050510]">
-    {/* Background elements */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
-    <div className="absolute top-1/4 -right-20 w-96 h-96 bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
-    
+  <section className="relative pt-[calc(5rem+2px)] pb-8 md:pt-[calc(5rem+32px)] md:pb-20 overflow-hidden bg-[#0b0118]">
+    <div className="absolute inset-0">
+      <img
+        src="/images/hero/forexherosection.webp"
+        alt=""
+        className="h-full w-full object-cover object-[58%_30%] md:object-center brightness-[1.06] contrast-[1.08] saturate-[1.14]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#0b0118]/56 via-[#0b0118]/26 to-[#0b0118]/10" />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#0b0118]/10 via-transparent to-[#0b0118]/38" />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(11,1,24,0.12) 0%, rgba(11,1,24,0.3) 28%, rgba(11,1,24,0.64) 52%, rgba(11,1,24,0.9) 74%, #0b0118 100%)',
+        }}
+      />
+    </div>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="relative z-20 mt-[92px] sm:mt-[104px] md:mt-0 max-w-2xl"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-xs font-bold mb-8 border border-gold/20">
             <Globe2 className="w-4 h-4" />
@@ -84,40 +95,6 @@ const ForexHero = () => (
             <Button to="/signup" variant="outline" className="px-10 py-5 text-lg">
               Try Demo Account
             </Button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <div className="relative z-10 aspect-square flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-[100px] animate-pulse" />
-            <div className="relative w-full h-full flex items-center justify-center">
-              <motion.div 
-                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-32 h-32 bg-dark-card border border-white/10 rounded-3xl flex items-center justify-center shadow-2xl backdrop-blur-xl"
-              >
-                <span className="text-5xl font-bold text-gold">€</span>
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 left-0 w-40 h-40 bg-dark-card border border-white/10 rounded-[2.5rem] flex items-center justify-center shadow-2xl backdrop-blur-xl"
-              >
-                <span className="text-6xl font-bold text-white">$</span>
-              </motion.div>
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="w-64 h-64 bg-gradient-to-br from-gold/20 to-gold/5 rounded-full border border-gold/30 flex items-center justify-center shadow-[0_0_50px_rgba(197,160,89,0.2)]"
-              >
-                <TrendingUp className="w-32 h-32 text-gold" />
-              </motion.div>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -164,78 +141,20 @@ const CurrencyPairs = () => {
 };
 
 const WhyTradeForex = () => (
-  <section className="py-32 bg-[#050510] relative overflow-hidden">
-    <div className="pointer-events-none absolute right-[-20px] top-1/2 -translate-y-1/2 hidden md:block z-0">
-      <img
-        src="/images/hero/logo-white.svg"
-        alt=""
-        aria-hidden
-        className="w-[540px] h-auto opacity-[0.08] blur-[0.2px]"
-        referrerPolicy="no-referrer"
-      />
-    </div>
+  <section className="py-32 bg-[linear-gradient(180deg,#13032a_0%,#09021b_58%,#090118_100%)] relative overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_16%_88%,rgba(120,72,198,0.24),transparent_44%),radial-gradient(circle_at_82%_70%,rgba(98,53,162,0.2),transparent_40%)]" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center max-w-3xl mx-auto mb-24">
+      <div className="text-center max-w-4xl mx-auto mb-10">
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Why Trade Forex With oneFX</h2>
-        <p className="text-white/40 text-xl">Experience the advantage of trading with a premium infrastructure provider.</p>
       </div>
 
-      <div className="relative">
-        {/* Central Star Icon */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold/10 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="w-24 h-24 bg-gold rounded-3xl flex items-center justify-center shadow-[0_0_50px_rgba(197,160,89,0.4)]"
-          >
-            <Zap className="w-12 h-12 text-dark" />
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 relative z-10">
-          <div className="space-y-12">
-            <div className="text-right flex flex-row-reverse gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <ShieldCheck className="text-gold w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Negative Balance Protection</h3>
-                <p className="text-white/40 leading-relaxed">Your losses can never exceed your deposits, ensuring your financial safety in volatile markets.</p>
-              </div>
-            </div>
-            <div className="text-right flex flex-row-reverse gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <BarChart3 className="text-gold w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Ultra-Low Spreads</h3>
-                <p className="text-white/40 leading-relaxed">Trade with spreads starting from 0.0 pips on major pairs, reducing your trading costs significantly.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-12">
-            <div className="flex gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <ArrowDownToLine className="text-gold w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Instant Withdrawals</h3>
-                <p className="text-white/40 leading-relaxed">Access your profits instantly with our automated withdrawal system and multiple payment methods.</p>
-              </div>
-            </div>
-            <div className="flex gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <Globe2 className="text-gold w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Global Market Access</h3>
-                <p className="text-white/40 leading-relaxed">Trade 60+ currency pairs including majors, minors, and exotics from a single powerful platform.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-[1180px] mx-auto overflow-hidden">
+        <img
+          src="/images/hero/Trade-Forex-With-oneFX.webp"
+          alt="Why Trade Forex With oneFX"
+          className="w-full h-auto object-cover object-center"
+          referrerPolicy="no-referrer"
+        />
       </div>
     </div>
   </section>
@@ -283,7 +202,7 @@ const UnderstandingForex = () => (
             How to trade Forex ?
           </h3>
           <p className="font-sans text-[#1A1B23]/78 text-base md:text-lg leading-relaxed font-normal">
-            To trade forex, open a trading account, fund it, and access a forex trading platform like MetaTrader 5. Traders buy and sell currency pairs, using analysis and strategies to capture opportunities in the forex market.
+            To trade forex, open a trading account, fund it, and access a forex trading platform like oneFXTrader. Traders buy and sell currency pairs, using analysis and strategies to capture opportunities in the forex market.
           </p>
         </div>
       </div>

@@ -257,15 +257,16 @@ export const ContactUs = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-[#0A0B10] relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/5 blur-[120px] rounded-full -translate-y-1/2" />
+      <section className="py-24 bg-[#070312] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+              className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5"
             >
               Power Your Trading <br />
               <span className="text-gold">Journey Today</span>
@@ -275,7 +276,7 @@ export const ContactUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-white/60 mb-12 leading-relaxed"
+              className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10"
             >
               Access Forex, Shares, Commodities and Metals with advanced platform.
             </motion.p>
@@ -285,9 +286,9 @@ export const ContactUs = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <Button to="/signup" className="px-12 py-6 text-xl font-bold bg-white text-dark border-none rounded-full hover:bg-gray-100 transition-all group">
+              <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
                 Open an Account
-                <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </motion.div>
           </div>

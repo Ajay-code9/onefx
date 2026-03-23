@@ -55,126 +55,112 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 // --- Page Sections ---
 
 const IBHero = () => (
-  <section className="relative pt-[calc(5rem+32px)] pb-24 overflow-hidden bg-[#0B0118]">
-    {/* Background Glows */}
-    <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-900/20 to-transparent pointer-events-none" />
-    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-purple-900/10 to-transparent pointer-events-none" />
-    
+  <section className="relative pt-[calc(5rem+8px)] pb-10 md:pt-[calc(5rem+32px)] md:pb-24 overflow-hidden bg-[#0B0118]">
+    <div className="absolute inset-0">
+      <img
+        src="/images/hero/introducingbroker-hero.webp"
+        alt=""
+        className="h-full w-full object-cover object-[70%_45%] md:object-center brightness-[1.14] contrast-[1.12] saturate-[1.18]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0b0118]/64 via-[#0b0118]/30 to-[#0b0118]/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b0118]/8 via-transparent to-[#0b0118]/16" />
+    </div>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="relative z-20 mt-[108px] sm:mt-[124px] md:mt-0 max-w-2xl"
         >
-          <h1 className="text-5xl md:text-8xl font-bold text-white leading-[0.9] mb-8 tracking-tighter font-display">
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight font-display">
             Partner as an <br />
-            <span className="gold-gradient-text">Introducing Broker</span>
+            <span className="text-white">Introducing Broker Today</span>
           </h1>
-          <p className="text-xl text-white/70 mb-10 leading-relaxed max-w-lg font-medium">
+          <p className="text-xl text-white/85 mb-10 leading-relaxed max-w-lg font-medium">
             Join oneFX's introducing broker program and earn competitive commissions by growing your trader network.
           </p>
           <Button to="/contact-us" className="px-12 py-5 text-xl rounded-full bg-linear-to-r from-gold to-[#B48F48] text-dark font-bold hover:opacity-90 transition-all flex items-center gap-3 shadow-[0_20px_60px_rgba(197,160,89,0.3)]">
             Ask to Join as IB <ChevronRight className="w-6 h-6" />
           </Button>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <div className="relative z-10">
-            <img 
-              src="https://picsum.photos/seed/partners/800/600" 
-              alt="Business Partners" 
-              className="rounded-2xl shadow-2xl border border-white/10"
-              referrerPolicy="no-referrer"
-            />
-            {/* Floating Stats Cards */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 left-10 bg-white p-6 rounded-xl shadow-2xl border border-black/5 z-20"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center">
-                  <TrendingUp className="text-gold w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-medium">You earned $19,100!</div>
-                  <div className="text-[10px] text-slate-400">For users you invited</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 -right-10 bg-white p-4 rounded-xl shadow-2xl border border-black/5 z-20"
-            >
-              <div className="text-center">
-                <div className="text-2xl font-bold text-emerald-500">173%</div>
-                <div className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Profit</div>
-              </div>
-            </motion.div>
-          </div>
-          
-          {/* Chart Overlay (Stylized) */}
-          <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 -z-10" />
-        </motion.div>
       </div>
     </div>
   </section>
 );
 
+const ibProcessSteps = [
+  {
+    num: '01',
+    title: 'Quick Signup',
+    desc: 'Apply online to join the introducing broker program.',
+  },
+  {
+    num: '02',
+    title: 'Grow Network',
+    desc: 'Introduce traders and expand your client base.',
+  },
+  {
+    num: '03',
+    title: 'Receive Commissions',
+    desc: 'Collect rebates with fast and transparent payouts.',
+  },
+] as const;
+
 const IBProcess = () => (
-  <section className="py-24 bg-white relative overflow-hidden">
+  <section className="py-16 md:py-24 bg-white relative overflow-hidden">
     <div className="absolute top-0 left-0 w-64 h-full bg-gold/5 -translate-x-1/2 rounded-full blur-3xl" />
-    
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center mb-20">
-        <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight">How to Become a Partner?</h2>
-        <p className="text-slate-500 text-xl font-medium">Choose the account that matches your trading goals.</p>
+      <div className="text-center mb-12 md:mb-20">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-slate-900 mb-4 md:mb-6 tracking-tight px-1">
+          How to Become a Partner?
+        </h2>
+        <p className="text-slate-500 text-base sm:text-lg md:text-xl font-medium max-w-2xl mx-auto px-2">
+          Choose the account that matches your trading goals.
+        </p>
       </div>
 
-      <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_auto_2fr] gap-12 items-center">
-        {/* Numbers */}
-        <div className="space-y-32 text-right">
-          <div className="text-8xl font-black text-gold/20 font-display">01</div>
-          <div className="text-8xl font-black text-gold/20 font-display">02</div>
-          <div className="text-8xl font-black text-gold/20 font-display">03</div>
-        </div>
+      {/* Each row: big number | timeline dot + dotted segment | copy — same on mobile & desktop (ref layout) */}
+      <div className="max-w-4xl mx-auto">
+        {ibProcessSteps.map((step, i) => (
+          <div
+            key={step.num}
+            className="flex gap-3 sm:gap-5 md:gap-10 items-start"
+          >
+            <div className="w-[3.25rem] sm:w-20 md:w-28 shrink-0 text-right leading-none pt-0.5 sm:pt-1">
+              <span className="text-5xl sm:text-7xl md:text-8xl font-black text-gold/20 font-display select-none">
+                {step.num}
+              </span>
+            </div>
 
-        {/* Dotted Line */}
-        <div className="hidden md:flex flex-col items-center h-full py-10">
-          <div className="w-px h-full border-l-2 border-dotted border-slate-200 relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rounded-full" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rounded-full" />
-          </div>
-        </div>
+            <div className="flex flex-col items-center shrink-0 w-3 sm:w-4">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gold shrink-0 ring-4 ring-white" />
+              {i < ibProcessSteps.length - 1 && (
+                <div
+                  className="w-px flex-1 border-l-2 border-dotted border-slate-300 min-h-[3.5rem] sm:min-h-[5.5rem] md:min-h-32"
+                  aria-hidden
+                />
+              )}
+            </div>
 
-        {/* Content */}
-        <div className="space-y-24">
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Quick Signup</h3>
-            <p className="text-slate-500 text-lg">Apply online to join the introducing broker program.</p>
+            <div className={`flex-1 min-w-0 ${i < ibProcessSteps.length - 1 ? 'pb-10 sm:pb-14 md:pb-24' : ''}`}>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3 md:mb-4">
+                {step.title}
+              </h3>
+              <p className="text-slate-500 text-base sm:text-lg leading-relaxed">{step.desc}</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Grow Network</h3>
-            <p className="text-slate-500 text-lg">Introduce traders and expand your client base.</p>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Receive Commissions</h3>
-            <p className="text-slate-500 text-lg">Collect rebates with fast and transparent payouts.</p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="text-center mt-20">
-        <Button to="/contact-us" className="px-10 py-4 rounded-full bg-linear-to-r from-gold to-[#B48F48] text-dark font-bold hover:opacity-90 transition-all flex items-center gap-2 mx-auto">
+      <div className="text-center mt-12 md:mt-20">
+        <Button
+          to="/contact-us"
+          className="px-10 py-4 rounded-full bg-linear-to-r from-gold to-[#B48F48] text-dark font-bold hover:opacity-90 transition-all inline-flex items-center gap-2"
+        >
           Become a Partner <ChevronRight className="w-5 h-5" />
         </Button>
       </div>
@@ -319,34 +305,27 @@ const IBCalculator = () => {
 };
 
 const AttractiveRebates = () => (
-  <section className="py-24 bg-black relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative">
-          <img 
-            src="https://picsum.photos/seed/rebates/800/600" 
-            alt="Rebates" 
-            className="rounded-2xl shadow-2xl opacity-80"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 to-transparent rounded-2xl" />
-          {/* Stylized Money Stack Placeholder */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="text-9xl font-bold text-white/10">%</div>
-          </div>
-        </div>
+  <section className="py-24 bg-[#050510] relative overflow-hidden">
+    <div className="relative min-h-[440px] overflow-hidden">
+      <img
+        src="/images/hero/attractive__rebates.webp"
+        alt="Attractive Rebates"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        referrerPolicy="no-referrer"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07020f]/20 via-[#07020f]/36 to-[#07020f]/72" />
 
-        <div>
-          <div className="text-gold font-bold text-sm uppercase tracking-[0.2em] mb-4">High Commission Rates</div>
-          <h2 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-[0.9]">
-            Attractive <br />
-            <span className="text-gold">Rebates</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[440px] flex items-center justify-end">
+        <div className="w-full max-w-[520px]">
+          <div className="text-white font-medium text-sm tracking-[0.05em] mb-3">High Commission Rates</div>
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-5 tracking-tight leading-[0.95]">
+            Attractive <span className="text-gold">Rebates</span>
           </h2>
-          <p className="text-white/60 text-xl mb-12 leading-relaxed font-medium">
+          <p className="text-white/88 text-xl mb-8 leading-relaxed font-medium">
             Earn consistent rebates with transparent reporting and fast partner payments.
           </p>
-          <Button to="/contact-us" variant="outline" className="px-12 py-5 rounded-full border-white text-white hover:bg-white hover:text-black transition-all flex items-center gap-3 text-lg">
-            Become an IB Partner <ChevronRight className="w-6 h-6" />
+          <Button to="/contact-us" className="px-10 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-3 text-lg">
+            Become an IB Partner <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
       </div>
@@ -392,19 +371,20 @@ const IBFAQ = () => (
 );
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#0B0118] relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-transparent pointer-events-none" />
-    
-    <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-      <h2 className="text-6xl md:text-9xl font-bold text-white mb-8 leading-[0.9] tracking-tighter">
+  <section className="py-24 bg-[#070312] relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
+
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
         Power Your Trading <br />
-        <span className="gold-gradient-text">Journey Today</span>
+        <span className="text-gold">Journey Today</span>
       </h2>
-      <p className="text-white/40 text-xl md:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+      <p className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10 max-w-4xl mx-auto">
         Access Forex, Shares, Commodities and Metals with advanced platform.
       </p>
-      <Button to="/signup" className="px-14 py-6 rounded-full bg-white text-black font-bold text-xl hover:bg-gold hover:text-white transition-all flex items-center gap-3 mx-auto shadow-[0_20px_60px_rgba(255,255,255,0.1)]">
-        Open an Account <ChevronRight className="w-6 h-6" />
+      <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
+        Open an Account <ChevronRight className="w-5 h-5" />
       </Button>
     </div>
   </section>

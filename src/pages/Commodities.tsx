@@ -57,73 +57,51 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 // --- Commodities Page Sections ---
 
 const CommoditiesHero = () => (
-  <section className="relative pt-[calc(5rem+32px)] pb-24 overflow-hidden bg-[#050510]">
-    {/* Background elements */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent pointer-events-none" />
-    <div className="absolute top-1/4 -right-20 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
-    
+  <section className="relative pt-[calc(5rem+2px)] pb-8 md:pt-[calc(5rem+32px)] md:pb-20 overflow-hidden bg-[#0b0118]">
+    <div className="absolute inset-0">
+      <img
+        src="/images/hero/forexherosection.webp"
+        alt=""
+        className="h-full w-full object-cover object-[58%_30%] md:object-center brightness-[1.06] contrast-[1.08] saturate-[1.14]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#0b0118]/56 via-[#0b0118]/26 to-[#0b0118]/10" />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#0b0118]/10 via-transparent to-[#0b0118]/38" />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(11,1,24,0.12) 0%, rgba(11,1,24,0.3) 28%, rgba(11,1,24,0.64) 52%, rgba(11,1,24,0.9) 74%, #0b0118 100%)',
+        }}
+      />
+    </div>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="relative z-20 mt-[92px] sm:mt-[104px] md:mt-0 max-w-2xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-orange-500 text-xs font-bold mb-8 border border-orange-500/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-xs font-bold mb-8 border border-gold/20">
             <Flame className="w-4 h-4" />
             <span>ENERGY & AGRICULTURE</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] mb-8 tracking-tighter">
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] mb-8 tracking-tighter font-sans">
             Trade Commodities <br />
-            <span className="text-orange-500">Online With oneFX</span>
+            <span className="gold-gradient-text">Online With oneFX</span>
           </h1>
           <p className="text-xl text-white/60 mb-10 leading-relaxed max-w-lg">
             Access energy, metals, and soft commodities with competitive pricing, advanced platforms, and secure trading solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              to="/signup"
-              className="px-10 py-5 text-lg bg-orange-500 hover:bg-orange-600 border-orange-500 shadow-orange-500/20"
-            >
+            <Button to="/signup" className="px-10 py-5 text-lg">
               Open Live Account <ChevronRight className="w-5 h-5 ml-1" />
             </Button>
-            <Button to="/signup" variant="outline" className="px-10 py-5 text-lg border-white/10 hover:border-orange-500/50">
+            <Button to="/signup" variant="outline" className="px-10 py-5 text-lg border-white/10 hover:border-gold/50">
               Try Demo Account
             </Button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <div className="relative z-10 aspect-square flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-full blur-[100px] animate-pulse" />
-            <div className="relative w-full h-full flex items-center justify-center">
-              <motion.div 
-                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-32 h-32 bg-dark-card border border-white/10 rounded-3xl flex items-center justify-center shadow-2xl backdrop-blur-xl"
-              >
-                <Flame className="w-16 h-16 text-orange-500" />
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 left-0 w-40 h-40 bg-dark-card border border-white/10 rounded-[2.5rem] flex items-center justify-center shadow-2xl backdrop-blur-xl"
-              >
-                <Wheat className="w-20 h-20 text-orange-400" />
-              </motion.div>
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="w-64 h-64 bg-gradient-to-br from-orange-500/20 to-orange-500/5 rounded-full border border-orange-500/30 flex items-center justify-center shadow-[0_0_50px_rgba(249,115,22,0.2)]"
-              >
-                <Droplets className="w-32 h-32 text-orange-500" />
-              </motion.div>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -179,127 +157,70 @@ const CommoditiesGrid = () => {
 };
 
 const WhyTradeCommodities = () => (
-  <section className="py-32 bg-[#050510] relative overflow-hidden">
-    <div className="pointer-events-none absolute right-[-20px] top-1/2 -translate-y-1/2 hidden md:block z-0">
-      <img
-        src="/images/hero/logo-white.svg"
-        alt=""
-        aria-hidden
-        className="w-[540px] h-auto opacity-[0.08] blur-[0.2px]"
-        referrerPolicy="no-referrer"
-      />
-    </div>
+  <section className="py-32 bg-[linear-gradient(180deg,#13032a_0%,#09021b_58%,#090118_100%)] relative overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_16%_88%,rgba(120,72,198,0.24),transparent_44%),radial-gradient(circle_at_82%_70%,rgba(98,53,162,0.2),transparent_40%)]" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center max-w-3xl mx-auto mb-24">
+      <div className="text-center max-w-4xl mx-auto mb-10">
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Why Trade Commodities With oneFX</h2>
-        <p className="text-white/40 text-xl">Experience the advantage of trading with a premium infrastructure provider.</p>
       </div>
 
-      <div className="relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="w-24 h-24 bg-orange-500 rounded-3xl flex items-center justify-center shadow-[0_0_50px_rgba(249,115,22,0.4)]"
-          >
-            <Zap className="w-12 h-12 text-dark" />
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 relative z-10">
-          <div className="space-y-12">
-            <div className="text-right flex flex-row-reverse gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <ShieldCheck className="text-orange-500 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Negative Balance Protection</h3>
-                <p className="text-white/40 leading-relaxed">Your losses can never exceed your deposits, ensuring your financial safety in volatile markets.</p>
-              </div>
-            </div>
-            <div className="text-right flex flex-row-reverse gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <BarChart3 className="text-orange-500 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Ultra-Low Spreads</h3>
-                <p className="text-white/40 leading-relaxed">Trade with spreads starting from 0.0 pips on major pairs, reducing your trading costs significantly.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-12">
-            <div className="flex gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <ArrowDownToLine className="text-orange-500 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Instant Withdrawals</h3>
-                <p className="text-white/40 leading-relaxed">Access your profits instantly with our automated withdrawal system and multiple payment methods.</p>
-              </div>
-            </div>
-            <div className="flex gap-8 items-start">
-              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                <Globe2 className="text-orange-500 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Explore Opportunities</h3>
-                <p className="text-white/40 leading-relaxed">Trade 60+ currency pairs including majors, minors, and exotics from a single powerful platform.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-[1180px] mx-auto overflow-hidden">
+        <img
+          src="/images/hero/Trade-Forex-With-oneFX.webp"
+          alt="Why Trade Commodities With oneFX"
+          className="w-full h-auto object-cover object-center"
+          referrerPolicy="no-referrer"
+        />
       </div>
     </div>
   </section>
 );
 
 const UnderstandingCommodities = () => (
-  <section className="py-32 bg-dark">
+  <section className="py-24 bg-[#F8F9FA]">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Understanding The <br /> <span className="text-orange-500">Commodity Market</span></h2>
+      <div className="text-center max-w-4xl mx-auto mb-14">
+        <h2 className="font-sans text-4xl md:text-6xl font-medium text-[#10131A] mb-5 leading-tight">
+          Understanding the Commodity Market
+        </h2>
+        <p className="font-sans text-[#10131A]/72 text-base md:text-xl leading-relaxed max-w-3xl mx-auto">
+          Understand how energy, agriculture, and metal commodities are traded worldwide, how prices move with supply and demand, and how traders diversify their portfolios through these markets.
+        </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-8">
-        {[
-          { 
-            title: 'What is commodity trading?', 
-            desc: 'Commodity trading involves buying and selling raw materials like oil, gold, or agricultural products. It\'s a way to diversify your portfolio and hedge against inflation.',
-            image: 'https://picsum.photos/seed/oil-rig/600/400'
-          },
-          { 
-            title: 'How to trade commodities?', 
-            desc: 'You can trade commodities through CFDs, allowing you to speculate on price movements without owning the physical asset. This provides leverage and flexibility.',
-            image: 'https://picsum.photos/seed/wheat-field/600/400'
-          },
-          { 
-            title: 'Market Drivers', 
-            desc: 'Commodity prices are driven by global supply and demand, geopolitical events, and economic data. Understanding these factors is key to successful trading.',
-            image: 'https://picsum.photos/seed/energy-market/600/400'
-          }
-        ].map((card, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className="rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 group"
-          >
-            <div className="aspect-video overflow-hidden">
-              <img 
-                src={card.image} 
-                alt={card.title} 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">{card.title}</h3>
-              <p className="text-white/40 leading-relaxed">{card.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+
+      <div className="grid lg:grid-cols-3 gap-6 lg:gap-7">
+        <div className="rounded-3xl overflow-hidden bg-white border border-[#E9EBF2] shadow-[0_10px_24px_rgba(15,23,42,0.07)] min-h-[540px]">
+          <img
+            src="/images/hero/Forex-Trading.svg"
+            alt="Commodity trading chart"
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+
+        <div className="rounded-3xl bg-[#ECEEF8] border border-[#E3E7F2] p-8 md:p-9 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+          <div className="w-12 h-12 rounded-xl bg-[#2A0D51] flex items-center justify-center mb-7">
+            <BarChart3 className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="font-sans text-[2.1rem] md:text-[2.35rem] leading-[1.12] font-medium text-[#1A1B23] mb-5">
+            What is commodity trading
+          </h3>
+          <p className="font-sans text-[#1A1B23]/78 text-base md:text-lg leading-relaxed font-normal">
+            Commodities trading involves buying and selling raw materials like oil, gold, and wheat in global markets. Traders speculate on price movements to profit. Learn more in our Commodities Trading Basics blog.
+          </p>
+        </div>
+
+        <div className="rounded-3xl bg-[#ECEEF8] border border-[#E3E7F2] p-8 md:p-9 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+          <div className="w-12 h-12 rounded-xl bg-[#2A0D51] flex items-center justify-center mb-7">
+            <HelpCircle className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="font-sans text-[2.1rem] md:text-[2.35rem] leading-[1.12] font-medium text-[#1A1B23] mb-5">
+            How to trade commodities
+          </h3>
+          <p className="font-sans text-[#1A1B23]/78 text-base md:text-lg leading-relaxed font-normal">
+            To trade commodities, choose from energy, metals, or agricultural assets on our platform. Traders buy or sell contracts based on price movements, using strategies to manage risk and diversify across global commodity markets.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -375,7 +296,7 @@ const CommoditiesFAQ = () => (
         />
         <FAQItem 
           question="Can I trade commodities on my mobile phone?"
-          answer="Yes, our MetaTrader 5 platform is fully compatible with iOS and Android devices, allowing you to manage your commodity trades on the go."
+          answer="Yes, our oneFXTrader platform is fully compatible with iOS and Android devices, allowing you to manage your commodity trades on the go."
         />
         <FAQItem 
           question="What factors influence commodity prices?"

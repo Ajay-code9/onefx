@@ -12,86 +12,74 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { MarketTickerStrip } from '../components/MarketTickerStrip';
+import { BeginTradingStepsSection } from '../components/CommonSections';
 
 const AboutHero = () => (
-  <section className="pt-[calc(5rem+32px)] pb-0 bg-white overflow-hidden">
+  <section className="relative pt-[calc(5rem+32px)] pb-6 bg-white overflow-hidden">
+    <div className="absolute inset-0">
+      <img
+        src="/images/hero/about__hero.webp"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-right brightness-[1.2] contrast-[1.1] saturate-[1.24]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/66 via-white/14 to-transparent" />
+    </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
-        <motion.div 
+      <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start min-h-[610px] pt-6 lg:pt-2">
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10"
+          className="relative z-10 max-w-[760px]"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-[1.1] tracking-tight">
-            <span className="text-gold">Building Trust Through</span> <br />
-            <span className="text-[#1A1B23]">Global Market Access</span>
+          <h1 className="font-sans text-[2.9rem] sm:text-[3.6rem] md:text-[4.25rem] font-semibold mb-8 leading-[1.04] tracking-tight">
+            <span className="text-gold md:whitespace-nowrap">Building Trust Through</span>
+            <br />
+            <span className="text-[#1A1B23] md:whitespace-nowrap">Global Market Access</span>
           </h1>
           
-          <p className="text-dark/60 text-xl mb-12 max-w-xl leading-relaxed">
-            oneFX is a trusted regulated forex broker delivering safe, reliable, and advanced trading platforms worldwide.
+          <p className="text-[#111318] text-[1.3rem] sm:text-[1.55rem] md:text-[1.5rem] mb-11 max-w-[760px] leading-[1.5] font-medium">
+            oneFX is a trusted regulated forex broker
+            <br />
+            delivering safe, reliable, and advanced trading
+            <br />
+            platforms worldwide.
           </p>
           
-          <Button to="/signup" className="px-10 py-5 text-lg rounded-full bg-gradient-to-r from-[#E5C384] to-[#A67C37] hover:opacity-90 transition-opacity border-none group">
+          <Button to="/signup" className="px-12 py-3.5 text-lg rounded-full bg-linear-to-r from-[#E5C384] to-[#A67C37] hover:opacity-90 transition-opacity border-none group">
             Open Live Account
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative h-full flex items-center justify-center"
-        >
-          {/* Floating 3D Icons Mockup */}
-          <div className="relative w-full max-w-lg aspect-square">
-            <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-64 h-64 bg-[#2D1B4E] rounded-[3rem] shadow-2xl flex items-center justify-center transform rotate-12"
-            >
-              <Star className="w-32 h-32 text-gold" fill="currentColor" />
-            </motion.div>
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-0 w-48 h-48 bg-[#2D1B4E] rounded-[2.5rem] shadow-2xl flex items-center justify-center transform -rotate-12"
-            >
-              <Star className="w-24 h-24 text-gold" fill="currentColor" />
-            </motion.div>
-            <motion.div 
-              animate={{ x: [0, 15, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/4 w-16 h-16 text-gold"
-            >
-              <Star className="w-full h-full" fill="currentColor" />
-            </motion.div>
-            <motion.div 
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-1/4 w-12 h-12 text-gold"
-            >
-              <Star className="w-full h-full" fill="currentColor" />
-            </motion.div>
-          </div>
-        </motion.div>
+        <div className="hidden lg:block" />
       </div>
     </div>
   </section>
 );
 
 const WhyChooseSection = () => (
-  <section className="py-24 bg-[#0A0B10] relative overflow-hidden">
+  <section className="py-24 bg-[#070312] relative overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_6%,rgba(88,60,170,0.36),transparent_44%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.07)_0%,transparent_24%,transparent_70%,rgba(121,76,214,0.2)_100%)]" />
+      <div className="absolute -bottom-[260px] left-1/2 -translate-x-1/2 w-[1320px] h-[620px] rounded-[100%] border border-white/14 bg-[radial-gradient(ellipse_at_top,rgba(96,56,182,0.22),rgba(13,6,28,0.08)_64%,transparent)]" />
+    </div>
+
+    <div className="absolute -right-10 top-8 opacity-90 pointer-events-none">
+      <Star className="w-[250px] h-[250px] text-gold drop-shadow-[0_18px_40px_rgba(197,160,89,0.35)]" fill="currentColor" />
+    </div>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+      <div className="text-center mb-14">
+        <h2 className="text-5xl md:text-6xl font-semibold text-white leading-[1.05] tracking-tight">
           Why Choose <br />
           <span className="text-gold">oneFX</span>
         </h2>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+      <div className="grid lg:grid-cols-3 gap-5 lg:gap-6 items-stretch max-w-5xl mx-auto">
         {[
           {
             icon: Target,
@@ -109,20 +97,18 @@ const WhyChooseSection = () => (
             desc: "We prioritize clients by offering fair conditions, secure systems, and dedicated support, ensuring every trader feels confident in foreign exchange trading platform."
           }
         ].map((item, i) => (
-          <div key={i} className="p-10 rounded-[2.5rem] bg-[#1A1B23] border border-white/5 flex flex-col items-start group hover:bg-[#252630] transition-all">
-            <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-              <item.icon className="text-white w-6 h-6" />
+          <div
+            key={i}
+            className="rounded-[1.35rem] border border-white/10 bg-white/[0.08] backdrop-blur-sm p-6 md:p-7 flex flex-col items-start min-h-[250px] shadow-[0_14px_30px_rgba(3,2,12,0.28)]"
+          >
+            <div className="w-7 h-7 rounded-md bg-white/18 border border-white/20 flex items-center justify-center mb-6">
+              <item.icon className="text-white w-3.5 h-3.5" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-6">{item.title}</h3>
-            <p className="text-white/40 leading-relaxed">{item.desc}</p>
+            <h3 className="text-[2rem] md:text-[2.15rem] font-semibold text-white mb-4 leading-[1.05]">{item.title}</h3>
+            <p className="text-white/80 leading-relaxed text-[1.03rem] md:text-[1.08rem]">{item.desc}</p>
           </div>
         ))}
       </div>
-    </div>
-    
-    {/* Large Gold Star Background element */}
-    <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 w-[600px] h-[600px] opacity-20 pointer-events-none">
-      <Star className="w-full h-full text-gold" fill="currentColor" />
     </div>
   </section>
 );
@@ -151,75 +137,29 @@ const StatsSection = () => (
   </section>
 );
 
-const StepsSection = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const steps = [
-    { title: "Quick Sign Up", desc: "Apply online to open your forex trading account." },
-    { title: "Secure Deposits", desc: "Fund your account using our secure payment methods." },
-    { title: "Start Trading", desc: "Access global markets and start trading instantly." }
-  ];
-
-  return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-[#1A1B23] mb-4">Begin Trading in Three Steps</h2>
-          <p className="text-dark/40">Open, fund, and access forex trading platforms quickly.</p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-8">
-            {steps.map((step, i) => (
-              <div 
-                key={i} 
-                className={`pl-8 border-l-2 transition-all cursor-pointer ${activeStep === i ? 'border-gold' : 'border-gray-100'}`}
-                onClick={() => setActiveStep(i)}
-              >
-                <div className="text-xs font-bold text-gold uppercase tracking-widest mb-2">Step {i + 1}</div>
-                <h3 className={`text-2xl font-bold mb-4 ${activeStep === i ? 'text-[#1A1B23]' : 'text-dark/40'}`}>{step.title}</h3>
-                {activeStep === i && (
-                  <motion.p 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-dark/60 leading-relaxed"
-                  >
-                    {step.desc}
-                  </motion.p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="relative">
-            <div className="bg-[#1A1B23] rounded-[3rem] p-4 shadow-2xl max-w-[320px] mx-auto">
-              <div className="bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19] relative">
-                <div className="p-8 pt-12 text-center">
-                  <div className="flex justify-center mb-8">
-                    <div className="flex items-center gap-2">
-                      <Star className="w-6 h-6 text-gold" fill="currentColor" />
-                      <span className="font-bold text-dark">oneFX</span>
-                    </div>
-                  </div>
-                  <h4 className="text-lg font-bold text-dark mb-8">Register as a Trader</h4>
-                  <div className="space-y-4">
-                    <div className="h-10 bg-gray-50 rounded-lg border border-gray-100" />
-                    <div className="h-10 bg-gray-50 rounded-lg border border-gray-100" />
-                    <div className="h-10 bg-gray-50 rounded-lg border border-gray-100" />
-                    <div className="h-12 bg-gold/10 rounded-lg border border-gold/20 flex items-center justify-center text-gold font-bold text-sm">
-                      Continue
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Background decorative element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold/5 rounded-full blur-[100px] -z-10" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+const StepsSection = () => (
+  <BeginTradingStepsSection
+    title="Begin Trading In Three Steps"
+    subtitle="Open, fund, and access forex trading platforms quickly."
+    steps={[
+      {
+        title: 'Quick Sign Up',
+        description: 'Apply online to open your forex trading account.',
+        image: '/images/hero/quick-signup.svg',
+      },
+      {
+        title: 'Secure Deposits',
+        description: 'Fund your account using our secure payment methods.',
+        image: '/images/hero/secure-deposits.svg',
+      },
+      {
+        title: 'Start Trading',
+        description: 'Access global markets and start trading instantly.',
+        image: '/images/hero/access-global-markets.svg',
+      },
+    ]}
+  />
+);
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -273,7 +213,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
   const faqs = [
     { q: "Is oneFX a trusted forex broker?", a: "Yes, oneFX is a reliable forex broker providing safe and transparent online forex trading." },
-    { q: "Which forex trading platforms do you support?", a: "We support industry-leading platforms including MetaTrader 5 and our proprietary oneFX WebTrader." },
+    { q: "Which forex trading platforms do you support?", a: "We support industry-leading platforms including oneFXTrader and our proprietary oneFX WebTrader." },
     { q: "Can beginners start forex trading here?", a: "Absolutely. We offer educational resources, demo accounts, and 24/7 support to help beginners get started." },
     { q: "How does oneFX ensure client fund protection?", a: "We use segregated accounts with top-tier banks and maintain strict regulatory compliance." },
     { q: "Do you offer global access?", a: "Yes, we provide traders worldwide with access to global financial markets." }
@@ -318,26 +258,23 @@ const FAQSection = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#0A0B10] relative overflow-hidden">
+  <section className="py-24 bg-[#070312] relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="text-center max-w-4xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+        <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>
         </h2>
-        <p className="text-white/60 text-xl mb-12 leading-relaxed">
+        <p className="text-white/80 text-lg md:text-[1.95rem] leading-[1.35] mb-10">
           Access Forex, Shares, Commodities and Metals with advanced platform.
         </p>
-        <Button to="/signup" className="px-12 py-6 text-xl rounded-full bg-white text-dark hover:bg-gray-100 transition-colors border-none group">
+        <Button to="/signup" className="mx-auto px-12 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-[#F3F4F6] transition-all flex items-center gap-2.5 text-lg">
           Open an Account
-          <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-5 h-5" />
         </Button>
       </div>
-    </div>
-    
-    {/* Decorative light streak */}
-    <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-purple-500/30 to-transparent blur-[120px] -mr-64 -mt-64" />
     </div>
   </section>
 );
