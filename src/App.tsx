@@ -1208,7 +1208,6 @@ const Home = () => {
               'linear-gradient(180deg, rgba(11,1,24,0.02) 0%, rgba(11,1,24,0.08) 24%, rgba(11,1,24,0.26) 44%, rgba(11,1,24,0.58) 62%, rgba(11,1,24,0.84) 78%, #0b0118 100%)',
           }}
         />
-        <div className="absolute left-0 right-0 bottom-0 h-[62%] md:hidden backdrop-blur-[3px] bg-[#0b0118]/18" />
         <div className="absolute inset-0 md:hidden bg-gradient-to-r from-[#0b0118]/52 via-[#0b0118]/18 to-transparent" />
         <div className="absolute inset-0 hidden md:block bg-[radial-gradient(circle_at_78%_45%,rgba(162,103,255,0.04),transparent_68%)] pointer-events-none" />
       </div>
