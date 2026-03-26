@@ -30,7 +30,7 @@ const CalendarWidget = () => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border-[6px] border-[#E5C384]/30 shadow-2xl overflow-hidden max-w-5xl mx-auto mt-16 relative">
+    <div className="bg-white rounded-2xl border-[6px] border-[#E5C384]/30 shadow-2xl overflow-hidden max-w-5xl mx-auto relative">
       <div className="p-4 border-b border-gray-100 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 text-gray-400">
@@ -98,25 +98,26 @@ const CalendarWidget = () => {
 };
 
 const CalendarHero = () => (
-  <section className="pt-[calc(5rem+32px)] pb-24 bg-[#1A0B2E] relative overflow-hidden">
+  <section className="hero-full-viewport pt-[calc(5rem+24px)] pb-8 md:pb-10 bg-[#1A0B2E] relative">
     {/* Background streaks */}
-    <div className="absolute inset-0 opacity-20">
+    <div className="absolute inset-0 opacity-20 pointer-events-none">
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.1)_50%,transparent_55%)] bg-[length:200%_200%] animate-[shimmer_10s_infinite_linear]" />
       <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.1)_0%,transparent_70%)]" />
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="hero-full-viewport-fill">
+    <div className="site-container relative z-10 flex flex-1 flex-col justify-center min-h-0 py-4">
       <div className="text-center max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tight">
+          <h1 className="site-heading-hero font-bold text-white mb-4 md:mb-6 tracking-tight">
             <span className="text-gold">Economic</span> Calendar
           </h1>
           
-          <p className="text-white/80 text-xl mb-12 leading-relaxed max-w-3xl mx-auto font-medium">
+          <p className="text-white/80 text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed max-w-3xl mx-auto font-medium">
             Access our real-time forex economic calendar to track global events and make informed forex trading decisions.
           </p>
         </motion.div>
@@ -126,9 +127,11 @@ const CalendarHero = () => (
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
+        className="mt-4 md:mt-6 w-full max-w-5xl mx-auto shrink min-h-0"
       >
         <CalendarWidget />
       </motion.div>
+    </div>
     </div>
   </section>
 );
@@ -165,10 +168,10 @@ const WhyUseCalendar = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-white">
+      <div className="site-container">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-[#1A1B23] mb-6">
+          <h2 className="site-heading font-bold text-[#1A1B23] mb-6">
             Why Use Our Forex Economic Calendar
           </h2>
           <p className="text-lg text-[#1A1B23]/60">
@@ -204,17 +207,17 @@ const WhyUseCalendar = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#070312] relative overflow-hidden">
+  <section className="site-section bg-[#070312] relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5"
+          className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5"
         >
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>

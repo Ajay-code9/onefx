@@ -7,19 +7,19 @@ import {
 import { Button } from '../components/Button';
 
 const AccountHero = () => (
-  <section className="pt-[calc(5rem+26px)] pb-24 md:pb-28 bg-white font-sans antialiased">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-5xl mx-auto">
+  <section className="bg-white pt-[calc(5rem+10px)] pb-6 sm:pb-8 md:pt-[calc(5rem+16px)] font-sans antialiased">
+    <div className="site-container">
+      <div className="text-center max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-[2.55rem] sm:text-[3.1rem] md:text-[4.1rem] font-semibold text-[#080320] mb-6 leading-[1.06] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#080320] mb-2 sm:mb-3 leading-tight tracking-tight">
             Compare Our <span className="text-gold">Trading Accounts</span> Easily
           </h1>
 
-          <p className="text-[#111318]/72 text-lg md:text-[2rem] leading-[1.48] max-w-4xl mx-auto font-normal">
+          <p className="text-[#111318]/72 text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-normal">
             Review and compare types of trading accounts at oneFX to choose the right fit for your strategy.
           </p>
         </motion.div>
@@ -81,8 +81,8 @@ const AccountCards = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-white">
+      <div className="site-container">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {accounts.map((account, i) => (
             <motion.div
@@ -146,8 +146,8 @@ const ComparisonTable = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#F8F9FA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-[#F8F9FA]">
+      <div className="site-container">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-dark mb-4">Detailed Comparison</h2>
           <p className="text-dark/60">Choose the account that best fits your trading style and goals.</p>
@@ -183,12 +183,12 @@ const ComparisonTable = () => {
 };
 
 const CTASection = () => (
-  <section className="py-24 bg-[#070312] relative overflow-hidden">
+  <section className="site-section bg-[#070312] relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center max-w-4xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
+        <h2 className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5">
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>
         </h2>

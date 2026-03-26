@@ -51,7 +51,7 @@ export function AuthLanguageSelect() {
 export function AuthPageChrome({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans text-[#333] antialiased">
-      <div className="relative mx-auto max-w-[1040px] px-4 pb-16 pt-6 sm:px-6 sm:pt-8">
+      <div className="relative site-container pb-12 sm:pb-16 lg:pb-20 pt-6 sm:pt-8">
         <AuthLanguageSelect />
         <div className="flex justify-center pt-2 pb-10 sm:pb-12">
           <AuthLogo />

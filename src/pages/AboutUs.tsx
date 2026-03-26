@@ -15,7 +15,7 @@ import { MarketTickerStrip } from '../components/MarketTickerStrip';
 import { BeginTradingStepsSection } from '../components/CommonSections';
 
 const AboutHero = () => (
-  <section className="relative pt-[calc(5rem+32px)] pb-6 bg-white overflow-hidden">
+  <section className="hero-full-viewport pt-[calc(5rem+24px)] pb-6 md:pb-8 bg-white">
     <div className="absolute inset-0">
       <img
         src="/images/hero/about__hero.webp"
@@ -25,8 +25,9 @@ const AboutHero = () => (
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white/66 via-white/14 to-transparent" />
     </div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start min-h-[610px] pt-6 lg:pt-2">
+    <div className="hero-full-viewport-fill">
+    <div className="site-container py-4 md:py-6">
+      <div className="relative z-10 grid lg:grid-cols-2 site-grid-gap lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -56,11 +57,12 @@ const AboutHero = () => (
         <div className="hidden lg:block" />
       </div>
     </div>
+    </div>
   </section>
 );
 
 const WhyChooseSection = () => (
-  <section className="py-24 bg-[#070312] relative overflow-hidden">
+  <section className="site-section bg-[#070312] relative overflow-hidden">
     <div className="absolute inset-0 pointer-events-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_6%,rgba(88,60,170,0.36),transparent_44%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.07)_0%,transparent_24%,transparent_70%,rgba(121,76,214,0.2)_100%)]" />
@@ -71,9 +73,9 @@ const WhyChooseSection = () => (
       <Star className="w-[250px] h-[250px] text-gold drop-shadow-[0_18px_40px_rgba(197,160,89,0.35)]" fill="currentColor" />
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center mb-14">
-        <h2 className="text-5xl md:text-6xl font-semibold text-white leading-[1.05] tracking-tight">
+        <h2 className="site-heading font-semibold text-white leading-[1.05] tracking-tight">
           Why Choose <br />
           <span className="text-gold">oneFX</span>
         </h2>
@@ -114,8 +116,8 @@ const WhyChooseSection = () => (
 );
 
 const StatsSection = () => (
-  <section className="py-24 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-white">
+    <div className="site-container">
       <div className="text-center mb-20">
         <h2 className="text-4xl font-bold text-[#1A1B23]">Results Backed By Numbers</h2>
       </div>
@@ -128,7 +130,7 @@ const StatsSection = () => (
           { value: "4", label: "Flexible account types" }
         ].map((stat, i) => (
           <div key={i} className="text-center">
-            <div className="text-5xl md:text-6xl font-bold text-gold mb-4">{stat.value}</div>
+            <div className="site-heading font-bold text-gold mb-4">{stat.value}</div>
             <div className="text-dark/60 font-medium">{stat.label}</div>
           </div>
         ))}
@@ -171,10 +173,10 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="site-section bg-white overflow-hidden relative">
+      <div className="site-container relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1A1B23] mb-4">Serving Traders Across Global Markets</h2>
+          <h2 className="site-heading font-bold text-[#1A1B23] mb-4">Serving Traders Across Global Markets</h2>
           <p className="text-dark/40">Strong MENA presence with global forex broker services.</p>
         </div>
 
@@ -220,8 +222,8 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-white">
+      <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="text-5xl font-bold text-[#1A1B23] leading-tight">Frequently asked questions</h2>
@@ -258,12 +260,12 @@ const FAQSection = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#070312] relative overflow-hidden">
+  <section className="site-section bg-[#070312] relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center max-w-4xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
+        <h2 className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5">
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>
         </h2>

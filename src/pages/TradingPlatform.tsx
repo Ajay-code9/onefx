@@ -30,7 +30,7 @@ import { Button } from '../components/Button';
 import { BeginTradingStepsSection } from '../components/CommonSections';
 
 const PlatformHero = () => (
-  <section className="pt-[calc(5rem+32px)] pb-20 bg-white overflow-hidden relative">
+  <section className="hero-full-viewport pt-[calc(5rem+24px)] pb-6 md:pb-8 bg-white relative">
     {/* Background Vertical Bars */}
     <div className="absolute inset-0 flex justify-around items-end px-4 opacity-5 pointer-events-none">
       {[40, 60, 30, 80, 50, 70, 45, 90, 35, 65, 55, 75].map((height, i) => (
@@ -42,18 +42,19 @@ const PlatformHero = () => (
       ))}
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <div className="hero-full-viewport-fill">
+    <div className="site-container relative z-10 text-center flex flex-1 flex-col justify-center min-h-0 py-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 tracking-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight">
           <span className="text-[#A67C37]">The Most Trusted Forex</span><br />
           <span className="text-[#1A0B2E]">Trading Platforms Worldwide</span>
         </h1>
         
-        <p className="text-gray-600 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-gray-600 text-lg md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
           Trade on oneFXTrader and oneFX's proprietary platform. Our platforms combine powerful features, advanced analysis, and secure execution, making them the best forex trading software for all traders.
         </p>
       </motion.div>
@@ -62,21 +63,21 @@ const PlatformHero = () => (
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mt-16"
+        className="relative mt-auto pt-6 md:pt-8 flex justify-center min-h-0"
       >
-        <div className="flex justify-center items-end gap-0 md:gap-8">
-          {/* Laptop on block */}
-          <div className="relative z-20 transform translate-y-12 md:translate-y-20">
-            <div className="bg-gray-200 w-full h-32 md:h-48 rounded-lg absolute bottom-0 left-0 -z-10 shadow-xl" />
+        <div className="flex justify-center items-end gap-0 md:gap-8 max-h-[38vh] md:max-h-[42vh] w-full">
+          <div className="relative z-20 transform translate-y-4 md:translate-y-8">
+            <div className="bg-gray-200 w-full h-24 md:h-36 rounded-lg absolute bottom-0 left-0 -z-10 shadow-xl" />
             <img 
               src="/images/hero/Advanced-Trading.webp" 
               alt="Trading on Laptop" 
-              className="w-[360px] md:w-[760px] drop-shadow-2xl"
+              className="max-w-[min(100%,360px)] md:max-w-[640px] max-h-[32vh] md:max-h-[38vh] h-auto w-auto object-contain drop-shadow-2xl mx-auto"
               referrerPolicy="no-referrer"
             />
           </div>
         </div>
       </motion.div>
+    </div>
     </div>
   </section>
 );
@@ -152,8 +153,8 @@ const TrustedBrokerTabs = () => {
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-white">
+      <div className="site-container">
         <h2 className="text-5xl font-bold text-center mb-16">Trusted Broker</h2>
         
         {/* Tabs */}
@@ -185,7 +186,7 @@ const TrustedBrokerTabs = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid lg:grid-cols-2 gap-16 items-center"
+            className="grid lg:grid-cols-2 site-grid-gap items-center"
           >
             <div className={`order-2 lg:order-1 ${activeTab === 'ANDROID' || activeTab === 'IOS' ? 'flex justify-center' : ''}`}>
               <div className={`rounded-2xl overflow-hidden shadow-2xl border border-gray-100 ${activeTab === 'ANDROID' || activeTab === 'IOS' ? 'max-w-[300px]' : 'w-full'}`}>
@@ -243,7 +244,7 @@ const FeatureGrid = () => {
   const bottomRow = featureItems.slice(3);
 
   return (
-    <section className="py-24 bg-[#060311] relative overflow-hidden">
+    <section className="site-section bg-[#060311] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-70">
         <div
           className="absolute inset-0"
@@ -256,7 +257,7 @@ const FeatureGrid = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(112,70,208,0.45),transparent_45%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="site-container relative z-10">
         <div className="lg:hidden text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-semibold text-white mb-2">oneFXTrader at Its Best</h2>
           <p className="text-3xl md:text-4xl font-semibold text-gold">Experience the Top Platform</p>
@@ -322,11 +323,11 @@ const FeatureGrid = () => {
 };
 
 const TradeEverything = () => (
-  <section className="py-24 bg-white overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-white overflow-hidden">
+    <div className="site-container">
       <div className="bg-gray-50 rounded-[2.5rem] p-12 lg:p-20 flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:w-1/2">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1A0B2E] mb-8 leading-tight">
+          <h2 className="site-heading font-bold text-[#1A0B2E] mb-8 leading-tight">
             Trade Everything On A Single Platform
           </h2>
           <p className="text-gray-600 text-lg mb-10 leading-relaxed">
@@ -351,9 +352,9 @@ const TradeEverything = () => (
 );
 
 const TradeYourWay = () => (
-  <section className="py-24 bg-white text-center">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl md:text-6xl font-bold text-[#1A0B2E] mb-6">
+  <section className="site-section bg-white text-center">
+    <div className="site-container">
+      <h2 className="site-heading font-bold text-[#1A0B2E] mb-6">
         Trade Your Way on Any Device
       </h2>
       <p className="text-gray-500 text-lg mb-16">
@@ -429,8 +430,8 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-white">
+      <div className="site-container">
         <div className="grid lg:grid-cols-3 gap-16">
           <div className="lg:col-span-1">
             <h2 className="text-5xl font-bold text-[#1A0B2E] leading-tight">
@@ -472,11 +473,11 @@ const FAQSection = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 relative overflow-hidden bg-[#070312]">
+  <section className="site-section relative overflow-hidden bg-[#070312]">
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <h2 className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5">
+    <div className="site-container relative z-10 text-center">
+      <h2 className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5">
         Power Your Trading <br />
         <span className="text-gold">Journey Today</span>
       </h2>

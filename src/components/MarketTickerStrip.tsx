@@ -48,7 +48,7 @@ export const MarketTickerStrip = ({ assets }: MarketTickerStripProps) => {
           ))}
         </motion.div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="py-2 text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">
           * Ticker is not live. Prices are for demonstration purposes only.
         </div>

@@ -59,7 +59,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 // --- Shares Page Sections ---
 
 const SharesHero = () => (
-  <section className="relative pt-[calc(5rem+2px)] pb-8 md:pt-[calc(5rem+32px)] md:pb-20 overflow-hidden bg-[#0b0118]">
+  <section className="hero-full-viewport pt-[calc(5rem+10px)] pb-6 md:pt-[calc(5rem+28px)] md:pb-8 bg-[#0b0118]">
     <div className="absolute inset-0">
       <img
         src="/images/hero/sharesherosections.webp"
@@ -78,19 +78,20 @@ const SharesHero = () => (
       />
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <div className="hero-full-viewport-fill">
+      <div className="site-container relative z-10 py-4 md:py-6">
+      <div className="grid lg:grid-cols-2 site-grid-gap items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-20 mt-[92px] sm:mt-[104px] md:mt-0 max-w-2xl"
+          className="relative z-20 max-w-2xl"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-xs font-bold mb-8 border border-gold/20">
             <BarChart3 className="w-4 h-4" />
             <span className="tracking-widest uppercase">Global Equity Markets</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] mb-8 tracking-tighter font-sans">
+          <h1 className="site-heading-hero font-bold text-white leading-[1.05] mb-8 tracking-tighter font-sans">
             Invest in <br />
             <span className="gold-gradient-text">Global Giants</span>
           </h1>
@@ -124,6 +125,7 @@ const SharesHero = () => (
           </div>
         </motion.div>
       </div>
+      </div>
     </div>
   </section>
 );
@@ -137,11 +139,11 @@ const SharesMarketOverview = () => {
   ];
 
   return (
-    <section className="py-24 bg-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-dark">
+      <div className="site-container">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Popular Stocks</h2>
+            <h2 className="site-heading font-bold text-white mb-6">Popular Stocks</h2>
             <p className="text-white/40 text-lg">Track and trade the most active companies in the global markets.</p>
           </div>
           <div className="flex gap-4">
@@ -185,11 +187,11 @@ const SharesMarketOverview = () => {
 };
 
 const SharesFeatures = () => (
-  <section className="py-32 bg-[linear-gradient(180deg,#13032a_0%,#09021b_58%,#090118_100%)] relative overflow-hidden">
+  <section className="site-section bg-[linear-gradient(180deg,#13032a_0%,#09021b_58%,#090118_100%)] relative overflow-hidden">
     <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_16%_88%,rgba(120,72,198,0.24),transparent_44%),radial-gradient(circle_at_82%_70%,rgba(98,53,162,0.2),transparent_40%)]" />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center max-w-4xl mx-auto mb-10">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Why Trade Shares With oneFX</h2>
+        <h2 className="site-heading font-bold text-white mb-6">Why Trade Shares With oneFX</h2>
       </div>
 
       <div className="max-w-[1180px] mx-auto overflow-hidden">
@@ -205,8 +207,8 @@ const SharesFeatures = () => (
 );
 
 const UnderstandingStockMarketTrading = () => (
-  <section className="py-24 bg-[#F8F9FA]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-[#F8F9FA]">
+    <div className="site-container">
       <div className="text-center max-w-4xl mx-auto mb-14">
         <h2 className="font-sans text-4xl md:text-6xl font-medium text-[#10131A] mb-5 leading-tight">
           Understanding Stock Market Trading
@@ -278,8 +280,8 @@ const SharesHeatmap = () => {
   };
 
   return (
-    <section className="py-24 bg-[#F8F9FA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-[#F8F9FA]">
+      <div className="site-container">
         <div className="text-center mb-12">
           <h2 className="font-sans text-4xl md:text-6xl font-medium text-[#10131A] mb-4">Heatmap</h2>
           <p className="font-sans text-[#10131A]/72 text-base md:text-xl">Monitor live currency strength and market direction instantly.</p>
@@ -323,10 +325,10 @@ const SharesHeatmap = () => {
 };
 
 const TradingSteps = () => (
-  <section className="py-32 bg-dark">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-dark">
+    <div className="site-container">
       <div className="text-center max-w-3xl mx-auto mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Start Trading in 3 Steps</h2>
+        <h2 className="site-heading font-bold text-white mb-6">Start Trading in 3 Steps</h2>
         <p className="text-white/40 text-lg">Join thousands of traders and start your journey with oneFX today.</p>
       </div>
       
@@ -355,11 +357,11 @@ const TradingSteps = () => (
 );
 
 const SharesFAQ = () => (
-  <section className="py-32 bg-[#050510]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-[#050510]">
+    <div className="site-container">
       <div className="grid lg:grid-cols-3 gap-16">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+          <h2 className="site-heading font-bold text-white mb-6">Frequently Asked Questions</h2>
           <p className="text-white/40 text-lg mb-8">Can't find the answer you're looking for? Contact our 24/5 support team.</p>
           <Button to="/contact-us" variant="outline" className="border-blue-500/20 text-blue-400 hover:bg-blue-500/10">
             Contact Support

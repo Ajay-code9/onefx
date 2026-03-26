@@ -5,7 +5,7 @@ import { Button } from '../components/Button';
 import { MarketTickerStrip } from '../components/MarketTickerStrip';
 
 const DepositHero = () => (
-  <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[#06020f] pt-[calc(5rem+22px)] pb-8 md:pt-[calc(5rem+30px)] md:pb-12">
+  <section className="hero-full-viewport bg-[#06020f] pt-[calc(5rem+22px)] pb-8 md:pt-[calc(5rem+28px)] md:pb-10">
     <div className="absolute inset-0">
       <img
         src="/images/hero/backgroundbehindguys.webp"
@@ -16,7 +16,8 @@ const DepositHero = () => (
       <div className="absolute inset-0 bg-[#06020f]/45" />
     </div>
 
-    <div className="relative z-10 flex flex-1 flex-col px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="relative z-10 hero-full-viewport-fill font-sans">
+      <div className="flex flex-1 flex-col site-container">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -103,13 +104,14 @@ const DepositHero = () => (
           <ChevronRight className="w-4 h-4 shrink-0" aria-hidden />
         </a>
       </motion.div>
+      </div>
     </div>
   </section>
 );
 
 const TrustedBrokerSection = () => (
-  <section className="py-16 md:py-20 bg-white font-sans antialiased">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="site-section bg-white font-sans antialiased">
+    <div className="site-container">
       <div className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
         <h2 className="text-3xl md:text-4xl font-medium text-[#10131A] mb-4 leading-tight">Trusted Broker</h2>
         <p className="text-[#10131A]/72 text-base md:text-lg leading-relaxed font-normal">
@@ -134,7 +136,7 @@ const TrustedBrokerSection = () => (
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+      <div className="grid lg:grid-cols-2 site-grid-gap lg:gap-14 items-center">
         <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
           <img src="/images/hero/depositwithdrawal2.webp" alt="Withdrawal method visual" className="w-full max-w-[400px] h-auto object-contain" referrerPolicy="no-referrer" />
         </div>
@@ -258,8 +260,8 @@ const PaymentMethodCard = ({ card }: { card: PaymentMethodCardData }) => (
 
 const FlexiblePaymentOptions = () => {
   return (
-    <section id="payment-methods" className="py-16 md:py-20 bg-white scroll-mt-28 font-sans antialiased">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="payment-methods" className="site-section bg-white scroll-mt-28 font-sans antialiased">
+      <div className="site-container">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-medium text-[#10131A] mb-3 leading-tight">Flexible Payment Options</h2>
           <p className="text-[#10131A]/72 text-base md:text-lg mb-4 leading-relaxed font-normal">
@@ -272,13 +274,17 @@ const FlexiblePaymentOptions = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
           {PAYMENT_METHOD_CARDS.slice(0, 3).map((card) => (
-            <PaymentMethodCard key={card.id} card={card} />
+            <React.Fragment key={card.id}>
+              <PaymentMethodCard card={card} />
+            </React.Fragment>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 max-w-[940px]">
+        <div className="grid md:grid-cols-2 gap-4 max-w-[940px] mx-auto">
           {PAYMENT_METHOD_CARDS.slice(3).map((card) => (
-            <PaymentMethodCard key={card.id} card={card} />
+            <React.Fragment key={card.id}>
+              <PaymentMethodCard card={card} />
+            </React.Fragment>
           ))}
         </div>
       </div>

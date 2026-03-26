@@ -8,19 +8,19 @@ import { Button } from '../components/Button';
 import { MarketTickerStrip } from '../components/MarketTickerStrip';
 
 const BlogHero = () => (
-  <section className="pt-[calc(5rem+32px)] pb-16 bg-white overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="bg-white pt-[calc(5rem+14px)] pb-8 sm:pb-10 md:pt-[calc(5rem+20px)]">
+    <div className="site-container">
       <div className="text-center max-w-3xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1B23] mb-8 tracking-tight">
+          <h1 className="site-heading font-bold text-[#1A1B23] mb-3 sm:mb-4 tracking-tight">
             <span className="text-gold">Our</span> Blog
           </h1>
           
-          <p className="text-[#1A1B23]/60 text-lg leading-relaxed">
+          <p className="text-[#1A1B23]/60 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
             Stay ahead of the global Forex market by tracking important economic events, news releases, and market indicators with oneFX
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ const BlogGrid = () => {
 
   return (
     <section className="pb-24 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="site-container relative z-10">
         {/* Filters */}
         <div className="flex flex-wrap gap-4 items-center justify-center mb-16">
           {categories.map((cat) => (
@@ -146,17 +146,17 @@ const BlogGrid = () => {
 };
 
 const BottomCTA = () => (
-  <section className="py-24 bg-[#070312] relative overflow-hidden">
+  <section className="site-section bg-[#070312] relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="site-container relative z-10">
       <div className="text-center max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5"
+          className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5"
         >
           Power Your Trading <br />
           <span className="text-gold">Journey Today</span>

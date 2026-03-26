@@ -151,7 +151,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ease-out ${navGlass}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2 group">
             <img
@@ -380,7 +380,7 @@ const FeatureBlock = ({ icon: Icon, title, description }: { icon: any, title: st
 
 const StatItem = ({ value, label }: { value: string, label: string }) => (
   <div className="text-center">
-    <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-display">{value}</div>
+    <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 font-display">{value}</div>
     <div className="text-gold font-bold uppercase tracking-wider text-[10px]">{label}</div>
   </div>
 );
@@ -388,7 +388,7 @@ const StatItem = ({ value, label }: { value: string, label: string }) => (
 const StepCard = ({ number, title, description }: { number: string, title: string, description: string }) => (
   <motion.div 
     whileHover={{ y: -10 }}
-    className="relative p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden group"
+    className="relative p-6 sm:p-8 rounded-2xl lg:rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden group"
   >
     {/* Large faded number in background */}
     <div className="text-[120px] font-black text-white/[0.03] absolute -bottom-10 -right-4 select-none group-hover:text-gold/[0.05] transition-colors duration-500">
@@ -399,8 +399,8 @@ const StepCard = ({ number, title, description }: { number: string, title: strin
       {number}
     </div>
     
-    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-gold transition-colors duration-300">{title}</h3>
-    <p className="text-white/50 text-base leading-relaxed">{description}</p>
+      <h3 className="text-lg sm:text-xl font-bold mb-3 text-white group-hover:text-gold transition-colors duration-300">{title}</h3>
+    <p className="text-white/50 text-sm sm:text-base leading-relaxed">{description}</p>
     
     {/* Subtle glow effect on hover */}
     <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -408,18 +408,18 @@ const StepCard = ({ number, title, description }: { number: string, title: strin
 );
 
 const WhatsNewCard = ({ image, title, description }: { image: string, title: string, description: string }) => (
-  <div className="flex flex-col gap-6">
-    <div className="rounded-[2rem] overflow-hidden aspect-[4/3] border border-white/10">
+  <div className="flex flex-col gap-4 lg:gap-6 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto w-full">
+    <div className="rounded-xl lg:rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
       <img
         src={image}
         alt={title}
-        className="w-full h-full object-cover scale-[1.06] md:scale-100"
+        className="w-full h-full object-cover"
         referrerPolicy="no-referrer"
       />
     </div>
-    <div className="space-y-3">
-      <h3 className="text-2xl font-bold text-slate-900">{title}</h3>
-      <p className="text-slate-500 leading-relaxed">{description}</p>
+    <div className="space-y-2">
+      <h3 className="text-lg sm:text-xl font-bold text-slate-900">{title}</h3>
+      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{description}</p>
     </div>
   </div>
 );
@@ -437,7 +437,7 @@ const AccountTypeCard = ({
 }) => (
   <motion.div 
     whileHover={{ scale: 1.02 }}
-    className={`p-8 rounded-[2rem] relative overflow-hidden flex flex-col justify-between min-h-[320px] shadow-2xl ${
+    className={`p-6 lg:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[280px] lg:min-h-[300px] shadow-xl ${
       variant === 'gold' 
         ? 'bg-gradient-to-br from-[#B8860B] to-[#DAA520] text-white' 
         : 'bg-[#1A1A2E] text-white border border-white/5'
@@ -531,14 +531,14 @@ const MarketExplorer = () => {
   const activeMarket = markets.find(m => m.id === activeTab) || markets[0];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Explore a Wide Range of Markets</h2>
-          <p className="text-slate-500 text-lg">Diversify your portfolio across leading global assets.</p>
+    <section className="site-section bg-white">
+      <div className="site-container">
+        <div className="text-center mb-8 lg:mb-10">
+          <h2 className="site-heading text-slate-900 mb-3">Explore a Wide Range of Markets</h2>
+          <p className="site-lead text-slate-600">Diversify your portfolio across leading global assets.</p>
         </div>
 
-        <div className="flex justify-center gap-2 mb-16">
+        <div className="flex justify-center gap-2 mb-8 lg:mb-10">
           {markets.map((market) => (
             <button
               key={market.id}
@@ -554,7 +554,7 @@ const MarketExplorer = () => {
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 site-grid-gap items-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -595,13 +595,13 @@ const MarketExplorer = () => {
               transition={{ duration: 0.4 }}
               className="flex flex-col justify-center"
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-10">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-6 lg:mb-8">
                 {activeMarket.title}
               </h3>
               
               <Link
                 to="/signup"
-                className="w-fit px-8 py-4 rounded-full border border-gold text-gold font-bold hover:bg-gold hover:text-white transition-all flex items-center gap-2 mb-20"
+                className="w-fit px-6 py-3 rounded-full border border-gold text-gold font-bold hover:bg-gold hover:text-white transition-all flex items-center gap-2 mb-8"
               >
                 Open Live Account
                 <ChevronRight className="w-4 h-4" />
@@ -619,18 +619,18 @@ const MarketExplorer = () => {
 };
 
 const TradingEdgeSection = () => (
-  <section className="py-32 bg-white relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-24">
-        <h2 className="text-5xl md:text-7xl font-bold text-[#10131A] mb-8">The Trading Edge You Deserve</h2>
-        <p className="text-slate-600 text-xl max-w-2xl mx-auto">Built for speed, reliability, and powerful trading.</p>
+  <section className="site-section bg-white relative overflow-hidden">
+    <div className="site-container">
+      <div className="text-center mb-10 lg:mb-12">
+        <h2 className="site-heading text-[#10131A] mb-4">The Trading Edge You Deserve</h2>
+        <p className="site-lead text-slate-600 max-w-2xl mx-auto">Built for speed, reliability, and powerful trading.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 site-grid-gap">
         {/* Lightning-Fast Execution — dark glass card on white section */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="md:col-span-2 p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group min-h-[450px] flex flex-col justify-between bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
+          className="md:col-span-2 p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden group min-h-[320px] lg:min-h-[380px] flex flex-col justify-between bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute top-0 right-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none">
             <img src="/images/hero/lightening-fast.webp" alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" aria-hidden />
@@ -639,8 +639,8 @@ const TradingEdgeSection = () => (
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
               <Zap className="text-white w-7 h-7" />
             </div>
-            <h3 className="text-4xl font-bold text-white mb-8 leading-tight">Lightning-Fast <br /> Execution</h3>
-            <p className="text-white/50 text-lg max-w-sm leading-relaxed">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 lg:mb-6 leading-tight">Lightning-Fast <br /> Execution</h3>
+            <p className="text-white/50 text-base sm:text-lg max-w-sm leading-relaxed">
               Execute your trades in milliseconds, regardless of size, for seamless and precise market action.
             </p>
           </div>
@@ -656,7 +656,7 @@ const TradingEdgeSection = () => (
         {/* Total Security */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
+          className="p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
@@ -666,8 +666,8 @@ const TradingEdgeSection = () => (
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
               <ShieldCheck className="text-white w-7 h-7" />
             </div>
-            <h3 className="text-3xl font-bold text-white mb-8">Total <br /> Security</h3>
-            <p className="text-white/50 text-lg leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 lg:mb-6">Total <br /> Security</h3>
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed">
               Advanced systems keep your data and activity safe.
             </p>
           </div>
@@ -676,7 +676,7 @@ const TradingEdgeSection = () => (
         {/* Unmatched Protection */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
+          className="p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
@@ -686,8 +686,8 @@ const TradingEdgeSection = () => (
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
               <Lock className="text-white w-7 h-7" />
             </div>
-            <h3 className="text-3xl font-bold text-white mb-8">Unmatched <br /> Protection</h3>
-            <p className="text-white/50 text-lg leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 lg:mb-6">Unmatched <br /> Protection</h3>
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed">
               Strong infrastructure ensures smooth and reliable trading.
             </p>
           </div>
@@ -696,7 +696,7 @@ const TradingEdgeSection = () => (
         {/* Competitive Spreads */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
+          className="p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
@@ -706,8 +706,8 @@ const TradingEdgeSection = () => (
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
               <BarChart3 className="text-white w-7 h-7" />
             </div>
-            <h3 className="text-3xl font-bold text-white mb-8">Competitive <br /> Spreads</h3>
-            <p className="text-white/50 text-lg leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 lg:mb-6">Competitive <br /> Spreads</h3>
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed">
               Consistently tight spreads across all major instruments.
             </p>
           </div>
@@ -716,7 +716,7 @@ const TradingEdgeSection = () => (
         {/* Rapid Withdrawals */}
         <motion.div 
           whileHover={{ y: -10 }}
-          className="p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
+          className="p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col bg-gradient-to-br from-[#1e1a2e] via-[#15101f] to-[#0c0a12] shadow-[0_24px_60px_rgba(15,10,25,0.18)]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
@@ -726,8 +726,8 @@ const TradingEdgeSection = () => (
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/10">
               <CreditCard className="text-white w-7 h-7" />
             </div>
-            <h3 className="text-3xl font-bold text-white mb-8">Rapid <br /> Withdrawals</h3>
-            <p className="text-white/50 text-lg leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 lg:mb-6">Rapid <br /> Withdrawals</h3>
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed">
               Seamless and quick withdrawal options for every client.
             </p>
           </div>
@@ -738,7 +738,7 @@ const TradingEdgeSection = () => (
 );
 
 const ZeroSpreadsSection = () => (
-  <section className="relative py-32 bg-[#050505] overflow-hidden">
+  <section className="relative site-section bg-[#050505] overflow-hidden">
     <div className="absolute inset-0">
       <img
         src="/images/hero/Zero-Pip-Spreads.webp"
@@ -749,8 +749,8 @@ const ZeroSpreadsSection = () => (
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#050505]/06 to-[#050505]/24" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]/10" />
     </div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-20 items-center relative z-10">
+    <div className="site-container">
+      <div className="grid lg:grid-cols-2 site-grid-gap items-center relative z-10">
         <div className="hidden lg:block" />
 
         <div className="relative z-10">
@@ -760,11 +760,11 @@ const ZeroSpreadsSection = () => (
             transition={{ duration: 0.6 }}
           >
             <div className="text-white/40 font-bold text-sm tracking-[0.2em] uppercase mb-6">Raw Pricing Advantage</div>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <h2 className="site-heading-hero text-white mb-4 lg:mb-6 leading-tight">
               Trade With <br />
               <span className="text-gold">Zero Pip Spreads</span>
             </h2>
-            <p className="text-white/60 text-xl mb-12 leading-relaxed max-w-lg">
+            <p className="text-white/60 site-lead mb-8 max-w-lg">
               Access institutional-grade pricing with spreads starting from 0.0 pips. Lower costs, improve accuracy, and maximize your trading performance with raw spreads.
             </p>
             <Link
@@ -782,13 +782,13 @@ const ZeroSpreadsSection = () => (
 );
 
 const OneFXTraderSection = () => (
-  <section className="py-24 bg-[#0A0A1F] relative overflow-hidden">
+  <section className="site-section bg-[#0A0A1F] relative overflow-hidden">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
     
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">Advanced Trading With <br /> oneFXTrader</h2>
+    <div className="site-container relative z-10 text-center">
+      <h2 className="site-heading text-white mb-8 lg:mb-10">Advanced Trading With <br /> oneFXTrader</h2>
       
-      <div className="relative max-w-5xl mx-auto mb-20 group">
+      <div className="relative max-w-4xl xl:max-w-5xl mx-auto mb-10 lg:mb-12 group">
         <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
         <div className="relative bg-dark rounded-[2rem] p-2 border border-white/10 shadow-2xl overflow-hidden">
           <img 
@@ -800,7 +800,7 @@ const OneFXTraderSection = () => (
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-12 mb-20">
+      <div className="grid md:grid-cols-3 site-grid-gap mb-10 lg:mb-12">
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-6 border border-white/10">
             <TrendingUp className="text-white w-8 h-8" />
@@ -882,16 +882,16 @@ const OneFXTraderSection = () => (
 );
 
 const ConfidenceSection = () => (
-  <section className="py-32 bg-white overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
+  <section className="site-section bg-white overflow-hidden">
+    <div className="site-container">
+      <div className="grid lg:grid-cols-2 site-grid-gap items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           className="relative"
         >
-          <h2 className="text-5xl md:text-7xl font-bold text-[#0F172A] mb-16 tracking-tight leading-[1.1]">
+          <h2 className="site-heading text-[#0F172A] mb-8 lg:mb-10 tracking-tight leading-tight">
             Trade With <br /> Confidence
           </h2>
           
@@ -974,9 +974,9 @@ const ConfidenceSection = () => (
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
-        className="mt-32 pt-24 border-t border-slate-100"
+        className="mt-16 lg:mt-20 pt-12 lg:pt-16 border-t border-slate-100"
       >
-        <h2 className="text-4xl font-bold text-[#0F172A] mb-16">Payment On</h2>
+        <h2 className="site-heading text-[#0F172A] mb-8 lg:mb-10">Payment On</h2>
         <div className="flex flex-wrap gap-8">
           {[
             { id: 'neteller', src: '/images/logos/netellerlogo.png', alt: 'Neteller' },
@@ -1007,7 +1007,7 @@ const ConfidenceSection = () => (
 const FinalCTASection = () => (
   <section className="relative overflow-hidden bg-[#0A0A1F]">
     {/* Top CTA Part */}
-    <div className="relative py-40">
+    <div className="relative site-section">
       {/* Premium background with deep gradients and glows */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(79,70,229,0.15),transparent),radial-gradient(circle_at_80%_70%,rgba(147,51,234,0.15),transparent)]" />
       <div className="absolute inset-0 bg-[#0A0A1F]" />
@@ -1018,7 +1018,7 @@ const FinalCTASection = () => (
         <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-gold/20 to-transparent animate-[shimmer_12s_infinite_linear_reverse]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div className="site-container relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1028,24 +1028,24 @@ const FinalCTASection = () => (
             <Zap className="w-4 h-4" />
             <span>READY TO SCALE YOUR TRADING?</span>
           </div>
-          <h2 className="text-6xl md:text-9xl font-bold text-white mb-10 leading-[0.9] tracking-tighter">
+          <h2 className="site-heading-hero text-white mb-6 leading-tight">
             Power Your Trading <br />
             <span className="gold-gradient-text">Journey Today</span>
           </h2>
-          <p className="text-white/40 text-xl md:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-white/50 site-lead mb-10 max-w-2xl mx-auto font-medium">
             Join thousands of traders worldwide and access the global markets with our award-winning advanced platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/signup"
-              className="bg-gold text-dark px-14 py-6 rounded-full font-bold text-xl flex items-center gap-3 hover:bg-white hover:text-dark transition-all duration-500 group shadow-[0_20px_60px_rgba(197,160,89,0.3)]"
+              className="bg-gold text-dark px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg flex items-center gap-2 hover:bg-white hover:text-dark transition-all duration-500 group shadow-[0_20px_60px_rgba(197,160,89,0.3)]"
             >
               Open Live Account
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </Link>
             <Link
               to="/signup"
-              className="bg-white/5 backdrop-blur-md text-white border border-white/10 px-14 py-6 rounded-full font-bold text-xl flex items-center gap-3 hover:bg-white/10 transition-all duration-500"
+              className="bg-white/5 backdrop-blur-md text-white border border-white/10 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg flex items-center gap-2 hover:bg-white/10 transition-all duration-500"
             >
               Try Demo Account
             </Link>
@@ -1055,20 +1055,20 @@ const FinalCTASection = () => (
     </div>
 
     {/* Bottom Steps Part - Integrated "How It Works" */}
-    <div className="relative py-40 bg-[#050510] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+    <div className="relative site-section bg-[#050510] border-t border-white/5">
+      <div className="site-container relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-white tracking-tight">Start Trading in Minutes</h2>
-            <p className="text-white/40 text-xl leading-relaxed">Our streamlined onboarding process gets you into the markets faster than ever.</p>
+            <h2 className="site-heading text-white mb-4">Start Trading in Minutes</h2>
+            <p className="text-white/50 site-lead">Our streamlined onboarding process gets you into the markets faster than ever.</p>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 site-grid-gap">
           <StepCard 
             number="01"
             title="Create Account"
@@ -1095,7 +1095,7 @@ const FinalCTASection = () => (
 );
 
 const TestimonialCard = ({ quote, author, role, company }: { quote: string, author: string, role: string, company: string }) => (
-  <div className="p-8 rounded-3xl bg-dark-card border border-white/5 shadow-xl">
+  <div className="p-6 lg:p-7 rounded-2xl bg-dark-card border border-white/5 shadow-xl">
     <div className="flex gap-1 mb-6">
       {[...Array(5)].map((_, i) => (
         <svg key={i} className="w-4 h-4 text-gold fill-current" viewBox="0 0 20 20">
@@ -1187,38 +1187,41 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-dark">
       {/* Hero Section */}
-      <section className="relative pt-[calc(5rem+10px)] pb-8 md:pt-[calc(5rem+32px)] md:pb-20 overflow-hidden bg-[#0b0118]">
+      <section className="hero-full-viewport pt-[calc(5rem+10px)] pb-6 md:pt-[calc(5rem+28px)] md:pb-8 bg-[#0b0118]">
       <div className="absolute inset-0">
         <picture>
           <source media="(min-width: 1024px)" srcSet="/images/hero/new_hero__banner.webp" />
           <img
             src="/images/hero/home-hero-mobile.svg"
             alt=""
-            className="h-full w-full object-cover scale-[0.92] md:scale-100 object-[62%_0%] md:object-center brightness-[1.07] contrast-[1.08] saturate-[1.15]"
+            className="h-full w-full object-cover scale-[0.92] md:scale-100 object-[66%_0%] md:object-center brightness-[0.92] md:brightness-[1.07] contrast-[1.06] md:contrast-[1.08] saturate-[1.02] md:saturate-[1.15]"
             aria-hidden
           />
         </picture>
         <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#0b0118]/54 via-[#0b0118]/24 to-[#0b0118]/08" />
         <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#0b0118]/6 via-transparent to-[#0b0118]/38" />
-        {/* Mobile-only smooth fade: keep top image visible, darken around text area */}
+        {/* Mobile-only: keep top clear, dark/soften lower hero for text readability */}
         <div
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(11,1,24,0.06) 0%, rgba(11,1,24,0.16) 18%, rgba(11,1,24,0.34) 32%, rgba(11,1,24,0.62) 46%, rgba(11,1,24,0.86) 60%, rgba(11,1,24,0.97) 74%, #0b0118 100%)',
+              'linear-gradient(180deg, rgba(11,1,24,0.02) 0%, rgba(11,1,24,0.08) 24%, rgba(11,1,24,0.26) 44%, rgba(11,1,24,0.58) 62%, rgba(11,1,24,0.84) 78%, #0b0118 100%)',
           }}
         />
+        <div className="absolute left-0 right-0 bottom-0 h-[62%] md:hidden backdrop-blur-[3px] bg-[#0b0118]/18" />
+        <div className="absolute inset-0 md:hidden bg-gradient-to-r from-[#0b0118]/52 via-[#0b0118]/18 to-transparent" />
         <div className="absolute inset-0 hidden md:block bg-[radial-gradient(circle_at_78%_45%,rgba(162,103,255,0.04),transparent_68%)] pointer-events-none" />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-4 md:gap-16 items-center">
+      <div className="hero-full-viewport-fill">
+        <div className="site-container py-4 md:py-6">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative z-20 mt-[136px] sm:mt-[150px] md:mt-0 max-w-2xl lg:max-w-[640px]"
+            className="relative z-20 max-w-2xl lg:max-w-xl xl:max-w-2xl p-0"
           >
-            <h1 className="text-[2.9rem] sm:text-[3.2rem] md:text-[4.25rem] lg:text-[4.25rem] font-medium font-display text-white leading-[0.97] mb-6">
+            <h1 className="site-heading-hero font-medium font-display text-white leading-tight mb-4 lg:mb-6 drop-shadow-[0_2px_18px_rgba(0,0,0,0.48)]">
               Fast Execution
               <br />
               <span
@@ -1231,28 +1234,28 @@ const Home = () => {
                 Ultra-Tight Spreads
               </span>
             </h1>
-            <p className="text-[1rem] sm:text-[1.06rem] md:text-[1.5rem] lg:text-[1.5rem] text-white/95 font-sans font-normal mb-7 leading-relaxed max-w-[660px]">
+            <p className="site-lead text-white font-sans font-medium md:font-normal mb-6 max-w-xl xl:max-w-2xl drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)]">
               Access Forex, Shares, Commodities, and Metals on powerful platforms with fast execution and low trading costs.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 mb-8 max-w-[760px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-2.5 mb-7 max-w-xl xl:max-w-2xl">
               {[
                 'Advanced Educational Platform',
                 'Fast and Reliable Execution',
                 'Dedicated Account Manager',
                 'Comprehensive Support Services',
               ].map((label) => (
-                <div key={label} className="flex items-start gap-3.5">
+                <div key={label} className="flex items-start gap-3">
                   <div className="mt-0.5 flex h-6 w-6 md:h-7 md:w-7 shrink-0 items-center justify-center rounded-full bg-gold shadow-sm shadow-gold/30">
                     <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-dark" strokeWidth={3} />
                   </div>
-                  <span className="text-[14px] sm:text-[15px] md:text-[1.25rem] lg:text-[1.25rem] font-sans font-normal leading-snug text-white pt-0.5">{label}</span>
+                  <span className="text-[0.96rem] sm:text-base font-sans font-medium md:font-normal leading-snug text-white pt-0.5 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]">{label}</span>
                 </div>
               ))}
             </div>
             <div className="mb-0 md:mb-12">
               <Link
                 to="/signup"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#BFA980] via-[#9E7D4A] to-[#5C4520] px-11 py-2.5 md:px-10 md:py-[0.95rem] text-base md:text-[1.25rem] font-normal font-sans text-white/95 shadow-[0_4px_18px_rgba(90,70,40,0.22)] transition-all duration-300 ease-out hover:from-[#D8C9A4] hover:via-[#C5A059] hover:to-[#7A5A28] hover:text-white hover:shadow-[0_8px_36px_rgba(197,160,89,0.45),0_0_28px_rgba(229,199,139,0.28),0_0_1px_rgba(255,245,220,0.5)] hover:brightness-[1.03]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#BFA980] via-[#9E7D4A] to-[#5C4520] px-8 py-2.5 sm:px-10 sm:py-3 text-sm sm:text-base font-normal font-sans text-white/95 shadow-[0_4px_18px_rgba(90,70,40,0.22)] transition-all duration-300 ease-out hover:from-[#D8C9A4] hover:via-[#C5A059] hover:to-[#7A5A28] hover:text-white hover:shadow-[0_8px_36px_rgba(197,160,89,0.45),0_0_28px_rgba(229,199,139,0.28),0_0_1px_rgba(255,245,220,0.5)] hover:brightness-[1.03]"
               >
                 Open Live Account
                 <ArrowRight className="h-4.5 w-4.5 md:h-5.5 md:w-5.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.25} />
@@ -1261,15 +1264,16 @@ const Home = () => {
           </motion.div>
 
         </div>
+        </div>
       </div>
     </section>
 
     <MarketTickerStrip assets={tickerAssets} />
 
     {/* What's New Section */}
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-slate-900">What's New on oneFX Trading Platform</h2>
+    <section className="site-section bg-white">
+      <div className="site-container">
+        <h2 className="site-heading text-center mb-8 lg:mb-10 text-slate-900">What's New on oneFX Trading Platform</h2>
         {/* Mobile: smooth slide (no native horizontal scroller) */}
         <div className="md:hidden">
           <div
@@ -1327,7 +1331,7 @@ const Home = () => {
         </div>
 
         {/* Desktop: 3 cards */}
-        <div className="hidden md:grid md:grid-cols-3 md:gap-12 md:overflow-visible">
+        <div className="hidden md:grid md:grid-cols-3 md:gap-6 lg:gap-10 md:overflow-visible">
           {whatsNewCards.map((card) => (
             <React.Fragment key={card.title}>
               <WhatsNewCard
@@ -1342,14 +1346,14 @@ const Home = () => {
     </section>
 
     {/* Account Types Section */}
-    <section className="py-24 bg-[#F8F9FA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Accounts Designed for Every Trader</h2>
-          <p className="text-slate-500 text-lg">Choose the account that matches your trading goals.</p>
+    <section className="site-section bg-[#F8F9FA]">
+      <div className="site-container">
+        <div className="text-center mb-8 lg:mb-10">
+          <h2 className="site-heading mb-3 text-slate-900">Accounts Designed for Every Trader</h2>
+          <p className="site-lead text-slate-600">Choose the account that matches your trading goals.</p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 site-grid-gap">
           <AccountTypeCard 
             title="SMART ACCOUNT"
             minDeposit="1,000"
@@ -1376,11 +1380,11 @@ const Home = () => {
     </section>
 
     {/* Begin Trading in 3 Steps */}
-    <section className="py-20 bg-[#F3F3F6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-6xl font-bold text-[#1A1B23] mb-4">Begin Trading in Three Simple Steps</h2>
-          <p className="text-[#1A1B23]/70 text-lg">Open your account and access global markets today.</p>
+    <section className="site-section bg-[#F3F3F6]">
+      <div className="site-container">
+        <div className="text-center mb-8 lg:mb-10">
+          <h2 className="site-heading text-[#1A1B23] mb-3">Begin Trading in Three Simple Steps</h2>
+          <p className="site-lead text-[#1A1B23]/70">Open your account and access global markets today.</p>
         </div>
 
         <div className="md:hidden space-y-4">
@@ -1401,7 +1405,7 @@ const Home = () => {
                   <div className={`font-sans text-[13px] font-normal mb-1 tracking-[0.01em] ${activeOnboardingStep === index ? 'text-[#8B7F65]' : 'text-[#1A1B23]/50'}`}>
                   Step {index + 1}
                   </div>
-                  <h3 className={`font-sans leading-[1.12] text-[#1A1B23] ${activeOnboardingStep === index ? 'text-[2.02rem]' : 'text-[1.75rem]'}`}>
+                  <h3 className={`font-sans leading-tight text-[#1A1B23] ${activeOnboardingStep === index ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'}`}>
                     {step.title}
                   </h3>
                   <p className={`font-sans text-[#1A1B23]/68 text-[1.1rem] leading-[1.4] transition-all duration-300 ease-out ${
@@ -1425,8 +1429,8 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="hidden md:grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <div className="space-y-1.5 max-w-[540px]">
+        <div className="hidden md:grid lg:grid-cols-2 site-grid-gap items-center">
+          <div className="space-y-1.5 max-w-md lg:max-w-lg">
             {onboardingSteps.map((step, index) => (
               <button
                 key={step.title}
@@ -1441,7 +1445,7 @@ const Home = () => {
                   <div className={`font-sans text-[13px] font-normal mb-1 tracking-[0.01em] ${activeOnboardingStep === index ? 'text-[#8B7F65]' : 'text-[#1A1B23]/45'}`}>
                     Step {index + 1}
                   </div>
-                  <h3 className="font-sans text-[2.02rem] leading-[1.08] font-normal text-[#1A1B23] mb-1.5">{step.title}</h3>
+                  <h3 className="font-sans text-xl sm:text-2xl leading-tight font-normal text-[#1A1B23] mb-1.5">{step.title}</h3>
                   <p className={`font-sans text-[#1A1B23]/68 text-[1.15rem] leading-[1.45] transition-all duration-300 ease-out ${
                     activeOnboardingStep === index ? 'opacity-100 max-h-24' : 'opacity-0 max-h-0 overflow-hidden'
                   }`}>
@@ -1453,7 +1457,7 @@ const Home = () => {
           </div>
 
           <div className="relative">
-            <div className="max-w-[520px] h-[420px] mx-auto overflow-hidden rounded-[1.4rem]">
+            <div className="max-w-md lg:max-w-lg xl:max-w-xl h-[min(360px,50vh)] lg:h-[400px] mx-auto overflow-hidden rounded-xl lg:rounded-2xl">
               <motion.img
                 key={activeOnboardingStep}
                 initial={{ opacity: 0.1, scale: 1.02 }}
@@ -1471,7 +1475,7 @@ const Home = () => {
     </section>
 
     {/* Partnership Program Section */}
-    <section className="py-24 relative overflow-hidden">
+    <section className="site-section relative overflow-hidden">
       <div className="absolute inset-0">
         <img
           src="/images/hero/backgroundbehindguys.webp"
@@ -1482,13 +1486,13 @@ const Home = () => {
         <div className="absolute inset-0 bg-[#050505]/50" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.2),transparent_65%)] pointer-events-none" />
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="site-container relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">More Than Just Partnership Program</h2>
-          <p className="text-white/70 text-lg">Trade with us to maximise your potential returns</p>
+          <h2 className="site-heading text-white mb-3">More Than Just Partnership Program</h2>
+          <p className="site-lead text-white/75">Trade with us to maximise your potential returns</p>
         </div>
 
-        <div className="max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10">
+        <div className="max-w-4xl xl:max-w-5xl mx-auto rounded-xl lg:rounded-2xl overflow-hidden border border-white/10 shadow-xl relative z-10">
           <img
             src="/images/hero/Parynership-program.webp"
             alt="Partnership Program"
@@ -1508,13 +1512,13 @@ const Home = () => {
     <TradingEdgeSection />
 
     {/* Features Section */}
-    <section id="platform" className="py-24 dark-section relative overflow-hidden">
+    <section id="platform" className="site-section dark-section relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full purple-glow opacity-50" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <div className="site-container relative z-10">
+        <div className="grid lg:grid-cols-2 site-grid-gap items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 leading-tight">Engineered for <br /><span className="gold-gradient-text">High-Performance</span> Trading</h2>
-            <div className="space-y-10">
+            <h2 className="site-heading mb-6 lg:mb-8 leading-tight">Engineered for <br /><span className="gold-gradient-text">High-Performance</span> Trading</h2>
+            <div className="space-y-6 lg:space-y-8">
               <FeatureBlock 
                 icon={Zap}
                 title="Ultra-fast Execution"
@@ -1538,11 +1542,11 @@ const Home = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
+            <div className="rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl border border-white/5 max-w-lg lg:max-w-xl xl:max-w-2xl ml-auto">
               <img 
                 src="/images/hero/high-performance-trading.svg" 
                 alt="High Performance Trading" 
-                className="w-full h-auto"
+                className="w-full h-auto object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -1561,9 +1565,9 @@ const Home = () => {
     </section>
 
     {/* Stats Section */}
-    <section className="py-24 bg-dark border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+    <section className="site-section bg-dark border-y border-white/5">
+      <div className="site-container">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
           <StatItem value="$500M+" label="Monthly Volume" />
           <StatItem value="40K+" label="Active Traders" />
           <StatItem value="99.9%" label="Platform Uptime" />
@@ -1579,14 +1583,14 @@ const Home = () => {
     <FinalCTASection />
 
     {/* Testimonials */}
-    <section className="py-24 bg-dark-card border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">What Our Clients Say</h2>
-          <p className="text-white/40 text-lg">Trusted by professional traders and brokers across the globe.</p>
+    <section className="site-section bg-dark-card border-y border-white/5">
+      <div className="site-container">
+        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+          <h2 className="site-heading mb-4 text-white">What Our Clients Say</h2>
+          <p className="site-lead text-white/50">Trusted by professional traders and brokers across the globe.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 site-grid-gap">
           <TestimonialCard 
             quote="oneFX has completely transformed our brokerage operations. The liquidity and execution speed are unmatched in the industry."
             author="Sarah Jenkins"
@@ -1639,9 +1643,9 @@ function AppShell() {
       </Routes>
 
       {!isAuthRoute && (
-        <footer className="bg-dark pt-24 pb-12 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-20">
+        <footer className="bg-dark pt-12 sm:pt-16 lg:pt-20 pb-10 border-t border-white/5">
+          <div className="site-container">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-10 mb-10 lg:mb-12">
               <div className="col-span-2 lg:col-span-1">
                 <Link to="/" className="flex items-center gap-2 mb-8">
                   <img
@@ -1704,7 +1708,7 @@ function AppShell() {
             </div>
 
             <div className="pt-12 border-t border-white/5">
-              <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+              <div className="grid md:grid-cols-2 site-grid-gap items-center mb-8">
                 <div className="text-white/20 text-[10px] leading-relaxed max-w-4xl">
                   <p className="mb-4">
                     oneFX Ltd is Incorporated in Saint Lucia under registration number 2025-00468, maintains its registered office at: Christaki Kranou 46, Office 2, Potamos Germasogeias, 4046, Limassol, Cyprus.

@@ -63,7 +63,7 @@ export const ContactUs = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative pt-[calc(5rem+32px)] pb-24 bg-[#1A0B2E] overflow-hidden">
+      <section className="hero-full-viewport pt-[calc(5rem+24px)] pb-10 md:pb-12 bg-[#1A0B2E]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px]" />
@@ -85,13 +85,14 @@ export const ContactUs = () => {
           ))}
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mb-20">
+        <div className="hero-full-viewport-fill">
+        <div className="site-container relative z-10 flex flex-1 flex-col justify-center gap-8 md:gap-10 py-4">
+          <div className="max-w-4xl">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight"
+              className="site-heading font-bold text-white mb-8 leading-tight tracking-tight"
             >
               Get in <span className="text-gold">Touch</span>
             </motion.h1>
@@ -105,7 +106,7 @@ export const ContactUs = () => {
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <ContactCard 
               icon={Mail}
               title="Email Support"
@@ -132,20 +133,21 @@ export const ContactUs = () => {
             />
           </div>
         </div>
+        </div>
       </section>
 
       <MarketTickerStrip assets={tickerAssets} />
 
       {/* Contact Form Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="site-section bg-white relative overflow-hidden">
+        <div className="site-container">
           <div className="grid lg:grid-cols-2 gap-20 items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-[#1A1B23] mb-8 leading-tight">
+              <h2 className="site-heading font-bold text-[#1A1B23] mb-8 leading-tight">
                 Connect with us & <br />
                 experience the difference
               </h2>
@@ -257,16 +259,16 @@ export const ContactUs = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-[#070312] relative overflow-hidden">
+      <section className="site-section bg-[#070312] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,rgba(124,87,210,0.42),transparent_52%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(72,35,140,0.2),transparent_70%)] pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="site-container relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-bold text-white leading-[0.96] tracking-tight mb-5"
+              className="site-heading font-bold text-white leading-[0.96] tracking-tight mb-5"
             >
               Power Your Trading <br />
               <span className="text-gold">Journey Today</span>

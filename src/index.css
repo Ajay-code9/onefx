@@ -28,6 +28,58 @@
   }
 }
 
+@layer components {
+  /** Global content width — use on all page sections */
+  .site-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /** Standard vertical rhythm between major sections */
+  .site-section {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  /** Primary page / section titles */
+  .site-heading {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight;
+  }
+
+  /** Hero title — slightly stronger but still capped */
+  .site-heading-hero {
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight;
+  }
+
+  /** Lead / subtitle copy */
+  .site-lead {
+    @apply text-base sm:text-lg lg:text-xl leading-relaxed;
+  }
+
+  /** Default responsive grid gap */
+  .site-grid-gap {
+    @apply gap-6 lg:gap-10;
+  }
+
+  /** Feature / illustration images — no full-bleed stretch on xl */
+  .site-img-feature {
+    @apply w-full max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto object-contain;
+  }
+
+  /**
+   * Full first-screen hero (fixed navbar ~5rem). Use on every page hero so only
+   * the hero fills the viewport on load; content stacks below the fold.
+   */
+  .hero-full-viewport {
+    @apply relative flex flex-col overflow-hidden;
+    min-height: 100dvh;
+    min-height: 100svh;
+  }
+
+  /** Vertically center hero copy/media inside the viewport area below the nav */
+  .hero-full-viewport-fill {
+    @apply relative z-10 flex flex-1 flex-col justify-center min-h-0;
+  }
+}
+
 .hero-gradient {
   background: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
               radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
