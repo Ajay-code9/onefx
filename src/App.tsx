@@ -94,7 +94,7 @@ const Navbar = () => {
   }, [location]);
 
   const navGlass = scrolled
-    ? 'border-b border-transparent md:border-white/10 bg-[#1a0d2e]/78 shadow-[0_8px_32px_rgba(88,28,135,0.2)] backdrop-blur-xl backdrop-saturate-150'
+    ? 'border-b border-transparent md:border-white/10 bg-[#1a0d2e]/78 shadow-none md:shadow-[0_8px_32px_rgba(88,28,135,0.2)] backdrop-blur-xl backdrop-saturate-150'
     : 'border-b border-transparent bg-transparent shadow-none backdrop-blur-none';
 
   const lightHeroPaths = [
