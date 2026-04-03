@@ -30,7 +30,7 @@ import { Button } from '../components/Button';
 import { BeginTradingStepsSection } from '../components/CommonSections';
 
 const PlatformHero = () => (
-  <section className="hero-full-viewport pt-[calc(5rem+24px)] pb-6 md:pb-8 bg-white relative">
+  <section className="hero-full-viewport max-md:min-h-0 pt-[calc(5rem+24px)] pb-6 md:pb-8 bg-white relative">
     {/* Background Vertical Bars */}
     <div className="absolute inset-0 flex justify-around items-end px-4 opacity-5 pointer-events-none">
       {[40, 60, 30, 80, 50, 70, 45, 90, 35, 65, 55, 75].map((height, i) => (
@@ -42,19 +42,19 @@ const PlatformHero = () => (
       ))}
     </div>
 
-    <div className="hero-full-viewport-fill">
-    <div className="site-container relative z-10 text-center flex flex-1 flex-col justify-center min-h-0 py-4">
+    <div className="hero-full-viewport-fill max-md:justify-start max-md:flex-none">
+    <div className="site-container relative z-10 text-center flex flex-1 flex-col max-md:justify-start max-md:flex-none justify-center min-h-0 py-4 max-md:pb-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-8 tracking-tight">
           <span className="text-[#A67C37]">The Most Trusted Forex</span><br />
           <span className="text-[#1A0B2E]">Trading Platforms Worldwide</span>
         </h1>
         
-        <p className="text-gray-600 text-lg md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-gray-600 text-base md:text-xl mb-0 md:mb-8 max-w-3xl mx-auto leading-relaxed">
           Trade on oneFXTrader and oneFX's proprietary platform. Our platforms combine powerful features, advanced analysis, and secure execution, making them the best forex trading software for all traders.
         </p>
       </motion.div>
@@ -63,15 +63,15 @@ const PlatformHero = () => (
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mt-auto pt-6 md:pt-8 flex justify-center min-h-0"
+        className="relative mt-5 flex justify-center min-h-0 md:mt-auto md:pt-8"
       >
-        <div className="flex justify-center items-end gap-0 md:gap-8 max-h-[38vh] md:max-h-[42vh] w-full">
-          <div className="relative z-20 transform translate-y-4 md:translate-y-8">
-            <div className="bg-gray-200 w-full h-24 md:h-36 rounded-lg absolute bottom-0 left-0 -z-10 shadow-xl" />
+        <div className="flex justify-center items-end gap-0 md:gap-8 max-h-[min(38vh,320px)] md:max-h-[42vh] w-full">
+          <div className="relative z-20 transform translate-y-2 md:translate-y-8">
+            <div className="bg-gray-200 w-full h-16 md:h-36 rounded-lg absolute bottom-0 left-0 -z-10 shadow-xl" />
             <img 
-              src="/images/hero/Advanced-Trading.webp" 
+              src="/images/user-side-images/dashboard2.svg" 
               alt="Trading on Laptop" 
-              className="max-w-[min(100%,360px)] md:max-w-[640px] max-h-[32vh] md:max-h-[38vh] h-auto w-auto object-contain drop-shadow-2xl mx-auto"
+              className="max-w-[min(100%,360px)] md:max-w-[640px] max-h-[min(30vh,280px)] md:max-h-[38vh] h-auto w-auto object-contain drop-shadow-2xl mx-auto"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -105,7 +105,7 @@ const TrustedBrokerTabs = () => {
       buttons: [
         { label: "Open Web Platform", icon: ArrowRight, href: '/signup' }
       ],
-      image: '/images/hero/web-terminal.svg',
+      image: '/images/user-side-images/dashboard.svg',
     },
     'DESKTOP': {
       title: "Download oneFXTrader for Desktop on Windows or Mac to enjoy full trading functionality with advanced tools and secure connectivity.",
@@ -120,7 +120,7 @@ const TrustedBrokerTabs = () => {
         { label: "Get oneFXTrader for Windows", icon: ArrowRight, href: '/signup' },
         { label: "Get oneFXTrader for MacOS", icon: ArrowRight, href: '/signup' }
       ],
-      image: '/images/hero/desktop.svg',
+      image: '/images/user-side-images/dashboard2.svg',
     },
     'ANDROID': {
       title: "Trade anywhere with the oneFXTrader Android app. Stay connected and manage your trades on the go with full functionality.",
@@ -157,25 +157,38 @@ const TrustedBrokerTabs = () => {
       <div className="site-container">
         <h2 className="text-5xl font-bold text-center mb-16">Trusted Broker</h2>
         
-        {/* Tabs */}
-        <div className="flex justify-center border-b border-gray-200 mb-12 overflow-x-auto">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-4 text-sm font-bold tracking-wider transition-all relative whitespace-nowrap ${
-                activeTab === tab.id ? 'text-[#1A0B2E]' : 'text-gray-400 hover:text-gray-600'
-              }`}
-            >
-              {tab.label}
-              {activeTab === tab.id && (
-                <motion.div 
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1A0B2E]"
-                />
-              )}
-            </button>
-          ))}
+        {/* Tabs — pill buttons, wrap on narrow screens (no horizontal scrollbar) */}
+        <div
+          className="mb-12 flex flex-wrap justify-center gap-2 sm:gap-3"
+          role="tablist"
+          aria-label="Platform type"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative min-h-11 shrink-0 rounded-full border px-4 py-2.5 text-xs font-bold tracking-wide transition-colors sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm ${
+                  isActive
+                    ? 'border-gold text-black shadow-md'
+                    : 'border-gray-200 bg-gray-50 text-gray-600 hover:border-gray-300 hover:bg-gray-100 hover:text-[#1A0B2E]'
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="trustedBrokerActiveTab"
+                    className="absolute inset-0 -z-10 rounded-full bg-gold"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 whitespace-nowrap">{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Content */}

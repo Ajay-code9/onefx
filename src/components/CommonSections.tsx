@@ -62,7 +62,7 @@ export const TradingPlatformsSection = () => {
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl lg:rounded-[2rem] p-3 sm:p-4 shadow-xl max-w-4xl xl:max-w-5xl mx-auto"
           >
             <img 
-              src="/images/hero/Advanced-Trading.webp" 
+              src="/images/user-side-images/dashboard2.svg" 
               alt="Trading Platform" 
               className="rounded-xl lg:rounded-3xl w-full h-auto object-contain"
               referrerPolicy="no-referrer"

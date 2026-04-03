@@ -133,8 +133,17 @@ const AccountCards = () => {
   );
 };
 
+const planKeys = ['smart', 'elite', 'premiere', 'prestige'] as const;
+type PlanKey = (typeof planKeys)[number];
+
 const ComparisonTable = () => {
-  const rows = [
+  const rows: {
+    feature: string;
+    smart: string;
+    elite: string;
+    premiere: string;
+    prestige: string;
+  }[] = [
     { feature: 'Minimum Deposit', smart: '$1,000', elite: '$5,000', premiere: '$25,000', prestige: '$50,000' },
     { feature: 'Spreads from', smart: '1.2 pips', elite: '0.8 pips', premiere: '0.4 pips', prestige: '0.0 pips' },
     { feature: 'Commission', smart: 'Zero', elite: 'Low', premiere: 'Ultra-Low', prestige: 'Zero Options' },
@@ -145,33 +154,84 @@ const ComparisonTable = () => {
     { feature: 'Market Analysis', smart: 'Daily', elite: 'Premium', premiere: 'Custom', prestige: 'Exclusive' },
   ];
 
+  const planLabels: Record<PlanKey, string> = {
+    smart: 'Smart',
+    elite: 'Elite',
+    premiere: 'Premiere',
+    prestige: 'Prestige',
+  };
+
   return (
     <section className="site-section bg-[#F8F9FA]">
       <div className="site-container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-dark mb-4">Detailed Comparison</h2>
-          <p className="text-dark/60">Choose the account that best fits your trading style and goals.</p>
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark mb-2 md:mb-4">Detailed Comparison</h2>
+          <p className="text-dark/60 text-sm md:text-base px-1">
+            Choose the account that best fits your trading style and goals.
+          </p>
         </div>
-        
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+
+        {/* Mobile: stacked feature cards, no horizontal scroll */}
+        <div className="md:hidden space-y-2.5">
+          {rows.map((row, i) => (
+            <div
+              key={i}
+              className="rounded-xl border border-dark/10 bg-white px-3 py-2.5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
+            >
+              <p className="text-[11px] font-bold uppercase tracking-wider text-dark/45 mb-2 leading-tight">
+                {row.feature}
+              </p>
+              <div className="grid grid-cols-2 gap-x-2 gap-y-2">
+                {planKeys.map((key) => (
+                  <div
+                    key={key}
+                    className={`min-w-0 rounded-lg px-2 py-1.5 ${
+                      key === 'prestige' ? 'bg-gold/8 ring-1 ring-gold/25' : 'bg-[#F8F9FA]'
+                    }`}
+                  >
+                    <div
+                      className={`text-[10px] font-bold uppercase tracking-wide leading-none mb-1 ${
+                        key === 'prestige' ? 'text-gold' : 'text-dark/40'
+                      }`}
+                    >
+                      {planLabels[key]}
+                    </div>
+                    <p
+                      className={`text-xs leading-snug break-words hyphens-auto ${
+                        key === 'prestige' ? 'text-dark font-semibold' : 'text-dark/70'
+                      }`}
+                    >
+                      {row[key]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* md+: full comparison table */}
+        <div className="hidden md:block overflow-x-auto rounded-xl border border-dark/5 bg-white">
+          <table className="w-full min-w-0 border-collapse text-sm">
             <thead>
-              <tr className="border-b-2 border-dark/5">
-                <th className="py-6 px-4 text-left text-dark/40 font-bold uppercase tracking-widest text-xs">Features</th>
-                <th className="py-6 px-4 text-center text-dark font-bold">Smart</th>
-                <th className="py-6 px-4 text-center text-dark font-bold">Elite</th>
-                <th className="py-6 px-4 text-center text-dark font-bold">Premiere</th>
-                <th className="py-6 px-4 text-center text-gold font-bold">Prestige</th>
+              <tr className="border-b-2 border-dark/5 bg-[#F8F9FA]">
+                <th className="py-4 px-3 lg:py-6 lg:px-4 text-left text-dark/40 font-bold uppercase tracking-widest text-xs">
+                  Features
+                </th>
+                <th className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark font-bold">Smart</th>
+                <th className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark font-bold">Elite</th>
+                <th className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark font-bold">Premiere</th>
+                <th className="py-4 px-2 lg:py-6 lg:px-4 text-center text-gold font-bold">Prestige</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-dark/5 hover:bg-white transition-colors">
-                  <td className="py-6 px-4 text-dark/70 font-medium">{row.feature}</td>
-                  <td className="py-6 px-4 text-center text-dark/60">{row.smart}</td>
-                  <td className="py-6 px-4 text-center text-dark/60">{row.elite}</td>
-                  <td className="py-6 px-4 text-center text-dark/60">{row.premiere}</td>
-                  <td className="py-6 px-4 text-center text-dark font-bold">{row.prestige}</td>
+                <tr key={i} className="border-b border-dark/5 hover:bg-[#FAFBFC] transition-colors">
+                  <td className="py-4 px-3 lg:py-6 lg:px-4 text-dark/70 font-medium">{row.feature}</td>
+                  <td className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark/60">{row.smart}</td>
+                  <td className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark/60">{row.elite}</td>
+                  <td className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark/60">{row.premiere}</td>
+                  <td className="py-4 px-2 lg:py-6 lg:px-4 text-center text-dark font-bold">{row.prestige}</td>
                 </tr>
               ))}
             </tbody>

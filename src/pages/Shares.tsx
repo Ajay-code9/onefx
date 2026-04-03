@@ -338,11 +338,14 @@ const TradingSteps = () => (
           { step: '02', title: 'Fund', desc: 'Deposit funds using our wide range of secure payment methods.', icon: <Wallet className="w-8 h-8" /> },
           { step: '03', title: 'Trade', desc: 'Access the markets and start trading your favorite shares.', icon: <MousePointer2 className="w-8 h-8" /> },
         ].map((item, i) => (
-          <div key={i} className="relative group">
-            <div className="text-[120px] font-bold text-white/5 absolute -top-16 -left-4 pointer-events-none group-hover:text-blue-500/10 transition-colors">
+          <div
+            key={i}
+            className="relative group flex flex-col items-center text-center md:items-start md:text-left"
+          >
+            <div className="text-[120px] font-bold text-white/5 absolute -top-16 left-1/2 -translate-x-1/2 md:-left-4 md:translate-x-0 pointer-events-none group-hover:text-blue-500/10 transition-colors select-none">
               {item.step}
             </div>
-            <div className="relative z-10">
+            <div className="relative z-10 flex w-full max-w-sm flex-col items-center md:items-start md:max-w-none">
               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-8 group-hover:border-blue-500/30 transition-all">
                 {item.icon}
               </div>

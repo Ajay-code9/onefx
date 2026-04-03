@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Target, 
@@ -34,13 +34,13 @@ const AboutHero = () => (
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-[760px]"
         >
-          <h1 className="font-sans text-[2.9rem] sm:text-[3.6rem] md:text-[4.25rem] font-semibold mb-8 leading-[1.04] tracking-tight">
-            <span className="text-gold md:whitespace-nowrap">Building Trust Through</span>
+          <h1 className="font-sans text-[2.9rem] sm:text-[3.6rem] md:text-[4.25rem] font-semibold mb-8 leading-[1.04] tracking-tight text-dark">
+            <span className="md:whitespace-nowrap">Building Trust Through</span>
             <br />
-            <span className="text-[#1A1B23] md:whitespace-nowrap">Global Market Access</span>
+            <span className="md:whitespace-nowrap">Global Market Access</span>
           </h1>
           
-          <p className="text-[#111318] text-[1.3rem] sm:text-[1.55rem] md:text-[1.5rem] mb-11 max-w-[760px] leading-[1.5] font-medium">
+          <p className="text-dark text-[1.3rem] sm:text-[1.55rem] md:text-[1.5rem] mb-11 max-w-[760px] leading-[1.5] font-semibold">
             oneFX is a trusted regulated forex broker
             <br />
             delivering safe, reliable, and advanced trading
@@ -169,8 +169,96 @@ const TestimonialsSection = () => {
     { name: "Marcos Kountouris", text: "I feel secure trading on this platform.", title: "Safe Trading", date: "Aug 2025" },
     { name: "Omar D.", text: "Support team available anytime, very responsive.", title: "Excellent Support", date: "Aug 2025" },
     { name: "Ahmed K.", text: "Fast account setup and reliable forex broker service.", title: "Great Experience", date: "Aug 2025" },
-    { name: "Ahmed K.", text: "Fast account setup and reliable forex broker service.", title: "Great Experience", date: "Aug 2025" }
+    { name: "Sara M.", text: "Clear pricing and quick withdrawals every time.", title: "Reliable Broker", date: "Aug 2025" },
   ];
+
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const scrollRafRef = useRef<number>(0);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [autoPaused, setAutoPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const apply = () => setIsMobile(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => setPrefersReducedMotion(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  const syncIndexFromScroll = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const left = el.scrollLeft;
+    let best = 0;
+    let bestDist = Infinity;
+    Array.from(el.children).forEach((node, i) => {
+      const h = node as HTMLElement;
+      const d = Math.abs(h.offsetLeft - left);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    setActiveIndex(best);
+  }, []);
+
+  const onScroll = useCallback(() => {
+    if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
+    scrollRafRef.current = requestAnimationFrame(syncIndexFromScroll);
+  }, [syncIndexFromScroll]);
+
+  const scheduleResumeAuto = useCallback(() => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => setAutoPaused(false), 3200);
+  }, []);
+
+  const onUserScrollStart = useCallback(() => {
+    if (!isMobile) return;
+    setAutoPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  }, [isMobile]);
+
+  const onUserScrollEnd = useCallback(() => {
+    if (!isMobile) return;
+    syncIndexFromScroll();
+    scheduleResumeAuto();
+  }, [isMobile, syncIndexFromScroll, scheduleResumeAuto]);
+
+  useEffect(() => {
+    if (!isMobile || autoPaused || prefersReducedMotion) return;
+    const id = window.setInterval(() => {
+      setActiveIndex((prev) => {
+        const el = scrollerRef.current;
+        if (!el) return prev;
+        const next = (prev + 1) % testimonials.length;
+        const child = el.children[next] as HTMLElement | undefined;
+        if (child) {
+          el.scrollTo({ left: child.offsetLeft, behavior: 'smooth' });
+        }
+        return next;
+      });
+    }, 4200);
+    return () => clearInterval(id);
+  }, [isMobile, autoPaused, prefersReducedMotion, testimonials.length]);
+
+  useEffect(
+    () => () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
+    },
+    []
+  );
 
   return (
     <section className="site-section bg-white overflow-hidden relative">
@@ -180,9 +268,23 @@ const TestimonialsSection = () => {
           <p className="text-dark/40">Strong MENA presence with global forex broker services.</p>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto pb-12 no-scrollbar">
+        <div
+          ref={scrollerRef}
+          role="region"
+          aria-label="Client testimonials"
+          onScroll={onScroll}
+          onTouchStart={onUserScrollStart}
+          onTouchEnd={onUserScrollEnd}
+          onPointerDown={onUserScrollStart}
+          onPointerUp={onUserScrollEnd}
+          onPointerCancel={onUserScrollEnd}
+          className="flex touch-pan-x gap-6 overflow-x-auto overscroll-x-contain pb-12 no-scrollbar snap-x snap-mandatory md:snap-none [-webkit-overflow-scrolling:touch]"
+        >
           {testimonials.map((t, i) => (
-            <div key={i} className="min-w-[300px] p-8 rounded-3xl bg-white border border-gray-100 shadow-sm">
+            <div
+              key={i}
+              className="min-w-[min(300px,calc(100vw-3rem))] shrink-0 snap-start p-8 rounded-3xl bg-white border border-gray-100 shadow-sm md:min-w-[300px]"
+            >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-gold" fill="currentColor" />)}
               </div>
@@ -195,10 +297,13 @@ const TestimonialsSection = () => {
             </div>
           ))}
         </div>
-        
-        <div className="flex justify-center gap-2">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className={`w-2 h-2 rounded-full ${i === 2 ? 'bg-dark w-4' : 'bg-gray-200'}`} />
+
+        <div className="flex justify-center gap-2" aria-hidden>
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              className={`h-2 rounded-full transition-all ${i === activeIndex ? 'w-4 bg-dark' : 'w-2 bg-gray-200'}`}
+            />
           ))}
         </div>
       </div>

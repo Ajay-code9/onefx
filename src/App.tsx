@@ -46,6 +46,8 @@ import ContactUs from './pages/ContactUs';
 import Blog from './pages/Blog';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import PlatformOverview from './pages/PlatformOverview';
+import ClientDashboard from './pages/ClientDashboard';
 
 import { MarketTickerStrip } from './components/MarketTickerStrip';
 import { Button } from './components/Button';
@@ -93,9 +95,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [location]);
 
+  // Mobile: force-disable border/shadow/backdrop-blur to eliminate the 1px divider artifact
+  // (helps even when `scrolled` toggles due to mobile browser chrome).
   const navGlass = scrolled
-    ? 'border-b border-transparent md:border-white/10 bg-[#1a0d2e]/78 shadow-none md:shadow-[0_8px_32px_rgba(88,28,135,0.2)] backdrop-blur-xl backdrop-saturate-150'
-    : 'border-b border-transparent bg-transparent shadow-none backdrop-blur-none';
+    ? 'border-b-0 shadow-none backdrop-blur-none bg-[#1a0d2e]/78 md:border-b md:border-white/10 md:shadow-[0_8px_32px_rgba(88,28,135,0.2)] md:backdrop-blur-xl md:backdrop-saturate-150'
+    : 'border-b-0 shadow-none backdrop-blur-none bg-transparent md:border-b md:border-transparent';
 
   const lightHeroPaths = [
     '/account-comparison',
@@ -128,6 +132,13 @@ const Navbar = () => {
       items: [
         { name: 'Account Comparison', path: '/account-comparison' },
         { name: 'Deposit Withdrawals', path: '/deposit-withdrawals' },
+      ] 
+    },
+    { 
+      title: 'Platform', 
+      items: [
+        { name: 'Overview', path: '/platform' },
+        { name: 'Client Dashboard', path: '/client-dashboard' },
       ] 
     },
     { 
@@ -792,7 +803,7 @@ const OneFXTraderSection = () => (
         <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
         <div className="relative bg-dark rounded-[2rem] p-2 border border-white/10 shadow-2xl overflow-hidden">
           <img 
-            src="/images/hero/Advanced-Trading.webp" 
+            src="/images/user-side-images/dashboard2.svg" 
             alt="oneFXTrader Platform" 
             className="w-full h-auto rounded-[1.5rem] brightness-90"
             referrerPolicy="no-referrer"
@@ -1188,13 +1199,13 @@ const Home = () => {
     <div className="min-h-screen bg-dark">
       {/* Hero Section */}
       <section className="hero-full-viewport pt-[calc(5rem+10px)] pb-6 md:pt-[calc(5rem+28px)] md:pb-8 bg-[#0b0118]">
-      <div className="absolute inset-0">
-        <picture>
+      <div className="absolute inset-0 overflow-hidden">
+        <picture className="block h-full w-full min-h-0">
           <source media="(min-width: 1024px)" srcSet="/images/hero/new_hero__banner.webp" />
           <img
             src="/images/hero/home-hero-mobile.svg"
             alt=""
-            className="h-full w-full object-cover scale-[0.92] md:scale-100 object-[66%_0%] md:object-center brightness-[0.92] md:brightness-[1.07] contrast-[1.06] md:contrast-[1.08] saturate-[1.02] md:saturate-[1.15]"
+            className="block h-full w-full min-h-full min-w-full object-cover object-[72%_42%] md:min-h-0 md:min-w-0 md:object-center brightness-[0.92] md:brightness-[1.07] contrast-[1.06] md:contrast-[1.08] saturate-[1.02] md:saturate-[1.15]"
             aria-hidden
           />
         </picture>
@@ -1220,20 +1231,16 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="relative z-20 max-w-2xl lg:max-w-xl xl:max-w-2xl p-0"
           >
-            <h1 className="site-heading-hero font-medium font-display text-white leading-tight mb-4 lg:mb-6 drop-shadow-[0_2px_18px_rgba(0,0,0,0.48)]">
+            <h1 className="site-heading-hero font-medium font-display text-zinc-50 md:text-white leading-tight mb-4 lg:mb-6 drop-shadow-[0_2px_22px_rgba(0,0,0,0.62)] md:drop-shadow-[0_2px_18px_rgba(0,0,0,0.48)] max-md:[text-shadow:0_1px_3px_rgba(0,0,0,0.75),0_0_20px_rgba(255,255,255,0.06)]">
               Fast Execution
               <br />
               <span
-                className="whitespace-nowrap bg-clip-text text-transparent [filter:drop-shadow(0_1px_0_rgba(255,240,200,0.2))_drop-shadow(0_8px_18px_rgba(120,82,24,0.25))]"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(96deg, #f1dda2 0%, #ddb86a 34%, #bf9247 62%, #8e672f 100%)',
-                }}
+                className="whitespace-nowrap bg-clip-text text-transparent max-md:bg-[linear-gradient(102deg,#fffdf6_0%,#fff3c8_18%,#f0d888_42%,#e0b850_68%,#c09038_100%)] md:bg-[linear-gradient(96deg,#f1dda2_0%,#ddb86a_34%,#bf9247_62%,#8e672f_100%)] max-md:[filter:brightness(1.22)_saturate(1.15)_contrast(1.06)_drop-shadow(0_1px_2px_rgba(0,0,0,0.65))_drop-shadow(0_0_28px_rgba(255,236,180,0.55))_drop-shadow(0_0_1px_rgba(255,255,255,0.35))] md:[filter:drop-shadow(0_1px_0_rgba(255,240,200,0.2))_drop-shadow(0_8px_18px_rgba(120,82,24,0.25))] max-md:[-webkit-text-stroke:0.35px_rgba(40,24,8,0.28)] md:[-webkit-text-stroke:0]"
               >
                 Ultra-Tight Spreads
               </span>
             </h1>
-            <p className="site-lead text-white font-sans font-medium md:font-normal mb-6 max-w-xl xl:max-w-2xl drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)]">
+            <p className="site-lead text-zinc-50 md:text-white font-sans font-medium md:font-normal mb-6 max-w-xl xl:max-w-2xl drop-shadow-[0_2px_18px_rgba(0,0,0,0.52)] md:drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)] max-md:[text-shadow:0_1px_2px_rgba(0,0,0,0.65)]">
               Access Forex, Shares, Commodities, and Metals on powerful platforms with fast execution and low trading costs.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-2.5 mb-7 max-w-xl xl:max-w-2xl">
@@ -1247,14 +1254,14 @@ const Home = () => {
                   <div className="mt-0.5 flex h-6 w-6 md:h-7 md:w-7 shrink-0 items-center justify-center rounded-full bg-gold shadow-sm shadow-gold/30">
                     <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-dark" strokeWidth={3} />
                   </div>
-                  <span className="text-[0.96rem] sm:text-base font-sans font-medium md:font-normal leading-snug text-white pt-0.5 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]">{label}</span>
+                  <span className="text-[0.96rem] sm:text-base font-sans font-medium md:font-normal leading-snug text-zinc-50 md:text-white pt-0.5 drop-shadow-[0_1px_12px_rgba(0,0,0,0.48)] md:drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] max-md:[text-shadow:0_1px_2px_rgba(0,0,0,0.6)]">{label}</span>
                 </div>
               ))}
             </div>
             <div className="mb-0 md:mb-12">
               <Link
                 to="/signup"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#BFA980] via-[#9E7D4A] to-[#5C4520] px-8 py-2.5 sm:px-10 sm:py-3 text-sm sm:text-base font-normal font-sans text-white/95 shadow-[0_4px_18px_rgba(90,70,40,0.22)] transition-all duration-300 ease-out hover:from-[#D8C9A4] hover:via-[#C5A059] hover:to-[#7A5A28] hover:text-white hover:shadow-[0_8px_36px_rgba(197,160,89,0.45),0_0_28px_rgba(229,199,139,0.28),0_0_1px_rgba(255,245,220,0.5)] hover:brightness-[1.03]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#BFA980] via-[#9E7D4A] to-[#5C4520] px-8 py-2.5 sm:px-10 sm:py-3 text-sm sm:text-base font-medium md:font-normal font-sans text-white md:text-white/95 shadow-[0_4px_22px_rgba(0,0,0,0.35),0_4px_18px_rgba(90,70,40,0.22)] md:shadow-[0_4px_18px_rgba(90,70,40,0.22)] transition-all duration-300 ease-out hover:from-[#D8C9A4] hover:via-[#C5A059] hover:to-[#7A5A28] hover:text-white hover:shadow-[0_8px_36px_rgba(197,160,89,0.45),0_0_28px_rgba(229,199,139,0.28),0_0_1px_rgba(255,245,220,0.5)] hover:brightness-[1.03]"
               >
                 Open Live Account
                 <ArrowRight className="h-4.5 w-4.5 md:h-5.5 md:w-5.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.25} />
@@ -1627,6 +1634,7 @@ function AppShell() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home />} />
+        <Route path="/platform" element={<PlatformOverview />} />
         <Route path="/forex" element={<Forex />} />
         <Route path="/commodities" element={<Commodities />} />
         <Route path="/metals" element={<Metals />} />
@@ -1635,6 +1643,7 @@ function AppShell() {
         <Route path="/account-comparison" element={<AccountComparison />} />
         <Route path="/deposit-withdrawals" element={<DepositWithdrawals />} />
         <Route path="/trading-platform" element={<TradingPlatform />} />
+        <Route path="/client-dashboard" element={<ClientDashboard />} />
         <Route path="/economic-calendar" element={<EconomicCalendar />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
